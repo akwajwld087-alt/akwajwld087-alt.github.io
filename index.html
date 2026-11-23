@@ -279,7 +279,6 @@
   .prod .media.ph{background:var(--aqua-grad);display:grid;place-items:center}
   .prod .media.ph svg{width:120px;height:120px;color:#fff;opacity:.95;animation:float 7s ease-in-out infinite}
   .prod .badge{position:absolute;top:16px;inset-inline-end:16px;background:var(--navy);color:var(--gold-l);font-weight:800;font-size:14px;padding:6px 15px;border-radius:999px;z-index:2}
-  .prod .badge.sale{background:#B3261E;color:#fff;animation:pulse 2.4s infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(179,38,30,.5)}60%{box-shadow:0 0 0 12px rgba(179,38,30,0)}}
   .prod .body{padding:24px 28px 28px;display:flex;flex-direction:column;gap:8px}
   .prod h3{margin:0;font-size:28px;line-height:1.25;font-weight:900}
@@ -386,21 +385,6 @@
   .spec-list b{color:var(--gold-ink);font-weight:800}
   .spec-ctas{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
 
-  /* ---------- offer ---------- */
-  .offer{background:var(--mist);padding-top:0}
-  .offer-box{display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;background:var(--navy-2);color:#fff;border-radius:44px;overflow:hidden;position:relative}
-  .offer-box::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(14,102,174,.4),transparent 65%);top:-220px;right:-180px}
-  .offer-text{padding:56px;position:relative}
-  .offer-text .tag{display:inline-block;color:var(--gold-l);font-weight:800;background:rgba(230,200,120,.12);border-radius:999px;padding:5px 16px;font-size:14.5px}
-  .offer-text .pct{font-family:"Montserrat";font-size:clamp(90px,13vw,170px);font-weight:700;line-height:1;margin-top:10px;direction:ltr;text-align:right}
-  .offer-text h2{margin:6px 0 10px;font-size:clamp(28px,3.2vw,40px);font-weight:900}
-  .offer-text p{color:#c7d1df}
-  .countdown{display:flex;gap:12px;margin:24px 0 30px}
-  .countdown div{background:rgba(255,255,255,.06);border-radius:22px;padding:12px 0;width:86px;text-align:center}
-  .countdown b{display:block;font-size:34px;color:var(--gold-l);font-family:"Montserrat";line-height:1.2}
-  .countdown small{font-size:13.5px;color:#a9b8cc}
-  .offer-box .pic{position:relative;overflow:hidden;margin:14px;border-radius:34px}
-  .offer-box .pic img{width:100%;height:100%;object-fit:cover}
 
   /* ---------- about ---------- */
   .about{background:var(--ivory)}
@@ -528,7 +512,7 @@
     .nav-end{flex:1;justify-content:flex-end}
     .hsearch{width:auto;flex:0 1 380px}
     .hs-btn{display:block}
-    .hero .wrap,.spec-wrap,.offer-box,.trust-box,.about-top{grid-template-columns:1fr}
+    .hero .wrap,.spec-wrap,.trust-box,.about-top{grid-template-columns:1fr}
     .hero .wrap{padding-block:110px 170px;gap:60px}
     .hero2{grid-template-columns:1fr}
     .spot-in{grid-template-columns:1fr;padding:56px 26px;gap:56px}
@@ -552,7 +536,6 @@
     .m-grid,.order{grid-template-columns:1fr}
     .logo-card,.field-card{max-width:440px;margin-inline:auto;width:100%}
     .gallery{grid-template-columns:1fr 1fr}
-    .offer-box .pic{max-height:460px}
     .spec-wrap{gap:50px}
     .f-grid{grid-template-columns:1fr 1fr}
     .fab,.totop{display:none}
@@ -602,8 +585,6 @@
     .sc .ci{width:50px;height:50px}
     .sc small{display:none}
     .spec-list li{grid-template-columns:1fr;gap:0}
-    .offer-box{border-radius:32px}
-    .offer-text{padding:36px 24px}
     .countdown div{width:72px}
     .values{grid-template-columns:1fr}
     .call{font-size:12.5px;padding:6px 11px}
@@ -954,26 +935,6 @@
     </div>
   </section>
 
-  <section class="offer" id="offer" hidden>
-    <div class="wrap">
-      <div class="offer-box" data-reveal>
-        <div class="offer-text">
-          <span class="tag">عرض لفترة محدودة</span>
-          <div class="pct gold-text shine">10%</div>
-          <h2>خصم على جينشان JIN CHAN</h2>
-          <p>العرض ساري لحد 30 نوفمبر. كلمنا على واتساب واحجز الكمية اللي محتاجها.</p>
-          <div class="countdown" aria-label="الوقت الباقي على نهاية العرض">
-            <div><b id="cdD">0</b><small>يوم</small></div>
-            <div><b id="cdH">0</b><small>ساعة</small></div>
-            <div><b id="cdM">0</b><small>دقيقة</small></div>
-            <div><b id="cdS">0</b><small>ثانية</small></div>
-          </div>
-          <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفيد من عرض خصم 10% على جينشان" href="#contact"><svg><use href="#i-wa"/></svg>احجز العرض</a>
-        </div>
-        <div class="pic"><img src="img/offer.webp" alt="بوستر عرض خصم 10% على جينشان" width="1000" height="1250" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
 
   <section class="about" id="about">
     <div class="wrap">
@@ -1132,13 +1093,12 @@
 <script>
 /* ===== البيانات: عدّل هنا ===== */
 const PHONE = "201286665262";           // رقم الواتساب والاتصال بالصيغة الدولية
-const OFFER_END = "2026-11-30T23:59:59+02:00"; // نهاية العرض (توقيت مصر)، بعدها العرض يختفي لوحده
 
 const PRODUCTS = [
   {
     name: "جينشان", en: "JIN CHAN",
     img: "img/jinchan-printed.webp", feature: true, key: "جين شان جنشان",
-    badge: "الأكثر طلبًا", sale: true,
+    badge: "الأكثر طلبًا",
     desc: "مادة استخلاص الذهب من الخام، لترشيح الكومة والخزان.",
     points: ["شيكارة 25 كجم", "سادة أو مطبوعة", "صلاحية سنتين", "ISO 9001:2015"],
     msg: "السلام عليكم، عايز عرض سعر على جينشان JIN CHAN",
@@ -1181,7 +1141,6 @@ const EQUIPMENT = [
 /* ============================== */
 
 const wa = (t) => `https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
-const offerOn = Date.now() < new Date(OFFER_END).getTime();
 const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.getElementById("productGrid").innerHTML = PRODUCTS.map((p, i) => `
@@ -1189,7 +1148,7 @@ document.getElementById("productGrid").innerHTML = PRODUCTS.map((p, i) => `
     <div class="media${p.icon ? " ph" : ""}${p.fit ? " fit" : ""}">
       ${p.feature ? `<span class="ripple"></span><span class="ripple r2"></span>` : ""}
       ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : `<svg><use href="#${p.icon}"/></svg>`}
-      ${p.sale && offerOn ? `<span class="badge sale">خصم 10%</span>` : p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+      ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
     </div>
     <div class="body">
       <h3>${p.name}<span class="en">${p.en}</span></h3>
@@ -1400,19 +1359,6 @@ addEventListener("resize", fixPill); document.fonts && document.fonts.ready.then
   draw();
 })();
 
-/* offer */
-if (offerOn) {
-  document.getElementById("offer").hidden = false;
-  const end = new Date(OFFER_END).getTime();
-  const tick = () => {
-    const s = Math.max(0, (end - Date.now()) / 1000);
-    cdD.textContent = Math.floor(s / 86400);
-    cdH.textContent = Math.floor(s % 86400 / 3600);
-    cdM.textContent = Math.floor(s % 3600 / 60);
-    cdS.textContent = Math.floor(s % 60);
-  };
-  tick(); setInterval(tick, 1000);
-}
 document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
 </body>
