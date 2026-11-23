@@ -147,16 +147,21 @@
   .hero2{grid-template-columns:1fr 1fr}
   .hero2 h1{font-size:clamp(36px,4.3vw,62px)}
   .hs-list[hidden]{display:none}
-  .hsearch{position:relative;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px;max-width:560px;margin-top:6px;transition:border-color .3s,background .3s}
+  .hs-toggle,.hs-close{display:none;border:0;cursor:pointer;place-items:center;padding:0;color:#fff}
+  .hs-toggle{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1)}
+  .hs-toggle svg{width:21px;height:21px}
+  .hs-close{width:36px;height:36px;flex:0 0 36px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .hs-close svg{width:16px;height:16px}
+  .hsearch{position:relative;display:flex;align-items:center;gap:6px;width:340px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:4px;transition:border-color .3s,background .3s,width .4s var(--ease)}
   .hsearch:focus-within{border-color:rgba(49,150,223,.7);background:rgba(255,255,255,.08)}
-  .hs-ic{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:grid;place-items:center;background:rgba(49,150,223,.14);color:var(--aqua-l)}
-  .hs-ic svg{width:20px;height:20px}
-  .hsearch input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;font:inherit;font-size:16.5px;padding:8px 4px}
+  .hs-ic{width:38px;height:38px;flex:0 0 38px;border-radius:50%;display:grid;place-items:center;background:rgba(49,150,223,.14);color:var(--aqua-l)}
+  .hs-ic svg{width:18px;height:18px}
+  .hsearch input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;font:inherit;font-size:15px;padding:6px 2px}
   .hsearch input::placeholder{color:#93a6bf}
   .hsearch input::-webkit-search-cancel-button{display:none}
-  .hs-btn{border:0;cursor:pointer;font:inherit;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(135deg,#3196DF,#0E66AE);border-radius:999px;padding:12px 28px;box-shadow:0 8px 22px rgba(14,102,174,.45);transition:transform .3s var(--ease)}
+  .hs-btn{border:0;cursor:pointer;font:inherit;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(135deg,#3196DF,#0E66AE);border-radius:999px;padding:9px 20px;font-size:15px;box-shadow:0 6px 16px rgba(14,102,174,.4);transition:transform .3s var(--ease)}
   .hs-btn:hover{transform:translateY(-2px)}
-  .hs-list{position:absolute;bottom:calc(100% + 10px);inset-inline:0;background:#fff;border-radius:24px;padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.35);z-index:20;display:flex;flex-direction:column;gap:2px;max-height:330px;overflow:auto}
+  .hs-list{position:absolute;top:calc(100% + 10px);inset-inline:0;background:#fff;border-radius:24px;padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.35);z-index:20;display:flex;flex-direction:column;gap:2px;max-height:330px;overflow:auto}
   .hs-list a,.hs-list .hs-none{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:16px;color:var(--navy);text-decoration:none;font-weight:800}
   .hs-list a:hover,.hs-list a.on{background:var(--mist)}
   .hs-list img{width:44px;height:44px;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--mist)}
@@ -184,8 +189,6 @@
   .cv-ctas .btn svg{width:19px;height:19px}
   .js .cv-stage{opacity:0;transform:translateY(30px)}
   .loaded .cv-stage{opacity:1;transform:none;transition:opacity 1s var(--ease) .3s,transform 1.2s var(--ease) .3s}
-  .js .hsearch{opacity:0;transform:translateY(24px)}
-  .loaded .hsearch{opacity:1;transform:none;transition:opacity .9s var(--ease) .7s,transform .9s var(--ease) .7s}
   .hit{animation:hit 1.6s var(--ease) 2}
   @keyframes hit{30%{box-shadow:0 0 0 4px rgba(49,150,223,.8),0 20px 50px rgba(14,102,174,.35)}}
 
@@ -502,13 +505,17 @@
   .mbar a.wa{background:var(--wa)}
 
   @media (max-width:1180px){
-    .nav-tel{display:none}
     .links a{padding:7px 11px;font-size:15px}
+    .hsearch{width:250px}
+    .hs-btn{display:none}
   }
   @media (max-width:980px){
     :root{--hdr:68px}
     .links,.nav .btn{display:none}
     .burger{display:grid}
+    .nav-end{flex:1;justify-content:flex-end}
+    .hsearch{width:auto;flex:0 1 380px}
+    .hs-btn{display:block}
     .hero .wrap,.spec-wrap,.offer-box,.trust-box,.about-top{grid-template-columns:1fr}
     .hero .wrap{padding-block:110px 170px;gap:60px}
     .hero2{grid-template-columns:1fr}
@@ -541,6 +548,13 @@
     footer{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
   }
   @media (max-width:620px){
+    .hs-toggle{display:grid}
+    .nav{position:relative}
+    .hsearch{display:none;position:absolute;inset-inline:12px;top:50%;transform:translateY(-50%);width:auto;z-index:5;background:#163563;border-color:rgba(95,180,240,.5);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .search-open .hsearch,.search-open .hsearch:focus-within{display:flex;background:#163563}
+    .search-open .hs-close{display:grid}
+    .hs-ic,.hs-btn{display:none!important}
+    .hsearch input{padding-inline:12px}
     body{font-size:16.5px}
     section{padding-block:76px}
     .eq-grid{grid-template-columns:1fr 1fr;gap:12px}
@@ -566,8 +580,6 @@
     .cv-card{width:200px;height:275px;margin-left:-100px}
     .cv-card .cv-name{font-size:17px;padding:10px 14px 12px}
     .cv-card img{inset:14px 14px 62px;width:calc(100% - 28px);height:calc(100% - 76px)}
-    .hs-btn{padding:11px 18px}
-    .hs-ic{display:none}
     .cv-ctas{width:100%}
     .cv-ctas .btn{flex:1 1 0;padding:13px 10px;font-size:15px;white-space:nowrap;gap:7px}
     .hero.spot .h1{font-size:34px}
@@ -645,8 +657,14 @@
       <a href="#contact">تواصل معانا</a>
     </nav>
     <div class="nav-end">
-      <a class="nav-tel" data-tel href="#contact"><svg><use href="#i-phone"/></svg>01286665262</a>
-      <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg><span>واتساب</span></a>
+      <form class="hsearch" id="hsearch" role="search" autocomplete="off">
+        <span class="hs-ic"><svg><use href="#i-search"/></svg></span>
+        <input id="hsInput" type="search" placeholder="ابحث عن منتج أو ماكينة..." aria-label="ابحث عن منتج أو ماكينة">
+        <button class="hs-btn" type="submit">بحث</button>
+        <button class="hs-close" id="hsClose" type="button" aria-label="اقفل البحث"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+        <div class="hs-list" id="hsList" hidden></div>
+      </form>
+      <button class="hs-toggle" id="hsToggle" type="button" aria-label="بحث" aria-controls="hsearch" aria-expanded="false"><svg><use href="#i-search"/></svg></button>
       <button class="burger" id="burger" type="button" aria-label="القايمة" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -677,12 +695,6 @@
           <span class="ln"><span class="grad-text">في مكان واحد</span></span>
         </h1>
         <p class="lead">أكوا جولد في أسوان: <b>جينشان الأصلي</b>، <b>والفحم النشط</b>، <b>والمعدات</b> من الكسارة للطاحونة لطاولة الفصل. اسأل على أي منتج وهنرد عليك بالسعر والمتاح.</p>
-        <form class="hsearch" id="hsearch" role="search" autocomplete="off">
-          <span class="hs-ic"><svg><use href="#i-search"/></svg></span>
-          <input id="hsInput" type="search" placeholder="ابحث عن منتج أو ماكينة..." aria-label="ابحث عن منتج أو ماكينة">
-          <button class="hs-btn" type="submit">بحث</button>
-          <div class="hs-list" id="hsList" hidden></div>
-        </form>
       </div>
       <div class="cv-stage">
         <div class="cv" id="cv" aria-roledescription="carousel" aria-label="منتجاتنا"></div>
@@ -1222,7 +1234,7 @@ layout(); play();
 const norm = t => t.toLowerCase().replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/[\u064B-\u0652]/g, "").replace(/ذ/g, "د").trim();
 const hsForm = document.getElementById("hsearch"), hsInput = document.getElementById("hsInput"), hsList = document.getElementById("hsList");
 const find = q => { const n = norm(q); if (!n) return []; const ws = n.split(/\s+/); return SHOW.filter(x => { const k = norm(x.key); return ws.every(w => k.includes(w)); }); };
-const jump = to => { const el = document.querySelector(to); if (!el) return; hsList.hidden = true; el.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" }); el.classList.remove("hit"); void el.offsetWidth; el.classList.add("hit"); };
+const jump = to => { const el = document.querySelector(to); if (!el) return; hsList.hidden = true; document.body.classList.remove("search-open"); hsInput.blur(); el.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" }); el.classList.remove("hit"); void el.offsetWidth; el.classList.add("hit"); };
 const showList = () => {
   const q = hsInput.value, r = find(q);
   if (!q.trim()) { hsList.hidden = true; return; }
@@ -1232,11 +1244,15 @@ const showList = () => {
   hsList.hidden = false;
   hsList.querySelectorAll("a[href^='#']").forEach(a => a.addEventListener("click", e => { e.preventDefault(); jump(a.getAttribute("href")); }));
 };
+const hsToggle = document.getElementById("hsToggle");
+const setSearch = open => { document.body.classList.toggle("search-open", open); hsToggle.setAttribute("aria-expanded", open); if (open) { setMenu && setMenu(false); hsInput.focus(); } else hsList.hidden = true; };
+hsToggle.addEventListener("click", () => setSearch(true));
+document.getElementById("hsClose").addEventListener("click", () => setSearch(false));
 hsInput.addEventListener("input", showList);
 hsInput.addEventListener("focus", showList);
 hsForm.addEventListener("submit", e => { e.preventDefault(); const r = find(hsInput.value); if (r.length) jump(r[0].to); else showList(); });
 document.addEventListener("click", e => { if (!hsForm.contains(e.target)) hsList.hidden = true; });
-hsInput.addEventListener("keydown", e => { if (e.key === "Escape") { hsList.hidden = true; hsInput.blur(); } });
+hsInput.addEventListener("keydown", e => { if (e.key === "Escape") { hsList.hidden = true; hsInput.blur(); document.body.classList.remove("search-open"); } });
 
 document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + PHONE; });
