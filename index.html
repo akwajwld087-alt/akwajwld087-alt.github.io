@@ -5,181 +5,297 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>أكوا جولد Aqua Gold | خامات وتكنولوجيا تنقية الذهب</title>
 <meta name="description" content="أكوا جولد في أسوان: مادة جينشان JIN CHAN الأصلية لاستخلاص الذهب، الفحم النشط، ومعدات التنقية. اطلب عرض سعر على واتساب.">
-<meta property="og:title" content="أكوا جولد Aqua Gold — الأصلي من مصدره">
-<meta property="og:description" content="جينشان JIN CHAN الأصلي — مادة استخلاص الذهب. شيكارة 25 كجم سادة ومطبوعة.">
+<meta property="og:title" content="أكوا جولد Aqua Gold، الأصلي من مصدره">
+<meta property="og:description" content="جينشان JIN CHAN الأصلي، مادة استخلاص الذهب. شيكارة 25 كجم سادة ومطبوعة.">
 <meta property="og:image" content="img/hero.webp">
-<meta name="theme-color" content="#10284A">
+<meta name="theme-color" content="#0A1A30">
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;600;700&family=Tajawal:wght@400;500;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
   :root{
-    --navy:#10284A; --navy-2:#0B1D37; --navy-3:#163563;
+    --night:#081528; --navy:#10284A; --navy-2:#0B1D37; --navy-3:#163563;
     --blue:#0E66AE;
-    --gold:#C89B4E; --gold-l:#E6C878; --gold-d:#9C7230;
-    --ivory:#F9FCF5;
-    --ink:#10284A; --muted:#4E5D71; --gold-ink:#7E5A1E;
-    --line:rgba(200,155,78,.28);
-    --radius:18px;
+    --gold:#C89B4E; --gold-l:#E6C878; --gold-d:#9C7230; --gold-ink:#7E5A1E;
+    --ivory:#F9FCF5; --sand:#EFE6D2;
+    --ink:#10284A; --muted:#4E5D71;
+    --line:rgba(230,200,120,.22);
     --wa:#167340;
-    --gold-grad:linear-gradient(135deg,#E6C878 0%,#C89B4E 45%,#9C7230 100%);
+    --gold-grad:linear-gradient(135deg,#F3DE9A 0%,#E6C878 20%,#C89B4E 55%,#9C7230 100%);
+    --ease:cubic-bezier(.2,.7,.1,1);
+    --arch:999px 999px 22px 22px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:"Tajawal",system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.7;font-size:17px}
+  body{margin:0;font-family:"Tajawal",system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.75;font-size:17px;overflow-x:hidden}
   img{max-width:100%;display:block}
   a{color:inherit}
-  .en{font-family:"Montserrat",sans-serif;letter-spacing:.04em;direction:ltr;unicode-bidi:isolate}
-  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
-  .gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  :focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:6px}
+  .en{font-family:"Montserrat",sans-serif;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate}
+  .kufi{font-family:"Reem Kufi","Tajawal",sans-serif}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+  .gold-text{background:var(--gold-grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+  .shine{animation:shine 6s linear infinite}
+  @keyframes shine{from{background-position:200% 0}to{background-position:-200% 0}}
 
-  /* header */
-  header{position:sticky;top:0;z-index:50;background:rgba(11,29,55,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
-  .brand img{width:46px;height:46px}
-  .brand b{font-weight:800;font-size:22px;line-height:1.1;display:block}
-  .brand small{font-size:13px;color:var(--gold-l)}
-  .links{display:flex;gap:26px}
-  .links a{color:#dfe6f0;text-decoration:none;font-weight:500}
-  .links a:hover{color:var(--gold-l)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 24px;border-radius:999px;font-weight:700;text-decoration:none;font-size:17px;border:0;cursor:pointer;transition:transform .15s, box-shadow .15s}
-  .btn:hover{transform:translateY(-2px)}
+  /* ---------- buttons ---------- */
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:999px;font-weight:800;text-decoration:none;font-size:17px;border:0;cursor:pointer;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
   .btn svg{width:22px;height:22px;flex:none}
-  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.18)}
-  .btn-gold{background:var(--gold-grad);color:var(--navy-2);box-shadow:0 6px 16px rgba(0,0,0,.18)}
-  .btn-ghost{border:1.5px solid var(--gold);color:var(--gold-l);background:transparent}
-  .nav .btn{padding:10px 18px;font-size:15px}
+  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(120%);transition:transform .7s var(--ease)}
+  .btn:hover::after{transform:translateX(-120%)}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.28)}
+  .btn-gold{background:var(--gold-grad);color:var(--navy-2);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+  .btn-ghost{border:1.5px solid rgba(230,200,120,.6);color:var(--gold-l);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{background:rgba(230,200,120,.1)}
 
-  /* offer strip */
-  .offer-strip{background:var(--gold-grad);color:var(--navy-2);text-align:center;font-weight:700;padding:9px 16px;font-size:15px}
+  /* ---------- offer strip ---------- */
+  .offer-strip{background:var(--gold-grad);color:var(--navy-2);text-align:center;font-weight:700;padding:8px 16px;font-size:15px;position:relative;z-index:61}
   .offer-strip a{font-weight:800}
 
-  /* hero */
-  .hero{background:radial-gradient(1200px 600px at 80% 0%,#1a3c6e 0%,var(--navy) 45%,var(--navy-2) 100%);color:#fff;overflow:hidden}
-  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:64px 72px}
-  .eyebrow{display:inline-block;border:1px solid var(--line);color:var(--gold-l);padding:6px 14px;border-radius:999px;font-size:14px;font-weight:700;margin-bottom:18px}
-  .hero h1{font-size:clamp(34px,5.2vw,62px);line-height:1.2;margin:0 0 10px;font-weight:800}
-  .hero h1 .en{display:block;font-size:.55em;margin-top:6px}
-  .hero p.lead{font-size:clamp(17px,2vw,21px);color:#cfd8e6;margin:14px 0 28px;max-width:34ch}
-  .hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-  .chip{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px;color:#e8edf4}
-  .chip b{color:var(--gold-l)}
-  .hero-img{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.45);aspect-ratio:4/5}
-  .hero-img img{width:100%;height:100%;object-fit:cover}
-  .hero-img .tag{position:absolute;bottom:16px;inset-inline-start:16px;background:rgba(11,29,55,.85);border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-weight:800}
+  /* ---------- header ---------- */
+  header{position:fixed;inset-inline:0;top:0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .4s,backdrop-filter .4s,border-color .4s,transform .4s;border-bottom:1px solid transparent}
+  body.has-strip header{top:var(--strip-h,0px)}
+  header.solid{background:rgba(8,21,40,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line);top:0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+  .brand img{width:48px;height:48px}
+  .brand b{font-family:"Reem Kufi",sans-serif;font-weight:700;font-size:23px;line-height:1.1;display:block}
+  .brand small{font-size:12px;color:var(--gold-l);letter-spacing:.2em}
+  .links{display:flex;gap:30px}
+  .links a{color:#dfe6f0;text-decoration:none;font-weight:500;position:relative;padding-block:6px}
+  .links a::after{content:"";position:absolute;bottom:0;inset-inline:0;height:2px;background:var(--gold-grad);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .links a:hover{color:#fff}
+  .links a:hover::after{transform:scaleX(1)}
+  .nav .btn{padding:11px 20px;font-size:15px}
 
-  /* sections */
-  section{padding-block:80px;scroll-margin-top:72px}
-  .sec-head{text-align:center;margin-bottom:44px}
-  .sec-head .kicker{color:var(--gold-ink);font-weight:800;font-size:15px}
-  .sec-head h2{font-size:clamp(28px,3.6vw,42px);margin:6px 0 8px;font-weight:800;line-height:1.25}
-  .sec-head p{color:var(--muted);margin:0 auto;max-width:56ch}
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100svh;background:radial-gradient(900px 700px at 15% 85%,rgba(200,155,78,.18),transparent 60%),radial-gradient(1100px 800px at 85% 10%,#1b3d6f 0%,transparent 60%),var(--night);color:#fff;overflow:hidden;display:flex;align-items:center}
+  #dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:130px 90px}
+  .hero-copy{position:relative;z-index:2}
+  .origin{display:inline-flex;align-items:center;gap:10px;color:var(--gold-l);font-weight:700;font-size:15px;margin-bottom:22px}
+  .origin i{width:34px;height:1.5px;background:var(--gold-grad);display:block}
+  .hero h1{font-family:"Reem Kufi",sans-serif;font-weight:700;font-size:clamp(42px,6vw,84px);line-height:1.1;margin:0}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+  .hero h1 .ln>span{display:inline-block}
+  .hero h1 .latin{font-family:"Montserrat",sans-serif;font-weight:800;letter-spacing:.02em;font-size:.92em;direction:ltr;unicode-bidi:isolate}
+  .hero .sub{display:block;font-family:"Montserrat",sans-serif;font-weight:600;font-size:clamp(13px,1.3vw,16px);letter-spacing:.28em;color:#93a6c1;margin-top:18px;direction:ltr;text-align:right}
+  .hero p.lead{font-size:clamp(17px,1.8vw,21px);color:#cdd7e6;margin:22px 0 34px;max-width:36ch}
+  .hero p.lead b{color:var(--gold-l)}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px}
+  .facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:46px;padding-top:26px;border-top:1px solid var(--line)}
+  .facts div{display:flex;flex-direction:column;line-height:1.2}
+  .facts b{font-family:"Montserrat",sans-serif;font-size:30px;font-weight:800;color:#fff}
+  .facts small{color:#93a6c1;font-size:14px;margin-top:6px}
 
-  /* products */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .card{background:#fff;border:1px solid #e7e2d6;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,.06);transition:transform .2s, box-shadow .2s}
-  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.1)}
-  .card .media{aspect-ratio:4/3;background:linear-gradient(160deg,#f3efe4,#e9e1cd);display:grid;place-items:center;overflow:hidden;position:relative}
-  .card .media img{width:100%;height:100%;object-fit:cover}
-  .card .media.contain img{object-fit:contain;padding:18px}
-  .card .media .badge{position:absolute;top:14px;inset-inline-end:14px;background:var(--navy);color:var(--gold-l);font-weight:800;font-size:13px;padding:5px 12px;border-radius:999px}
-  .card .media .badge.sale{background:#B3261E;color:#fff}
-  .card .media.placeholder{background:radial-gradient(circle at 30% 30%,#22364f,#0b1d37)}
-  .card .media.placeholder svg{width:96px;height:96px;color:var(--gold)}
-  .card .body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .card h3{margin:0;font-size:23px;font-weight:800;line-height:1.3}
-  .card h3 .en{font-size:14px;color:var(--gold-ink);display:block}
-  .card p{margin:0;color:var(--muted);font-size:16px}
-  .card ul{margin:4px 0 0;padding-inline-start:18px;color:var(--ink);font-size:15px}
-  .card .actions{margin-top:auto;padding-top:14px}
-  .card .actions .btn{width:100%;padding:12px}
+  .arch{position:relative;justify-self:center;width:min(100%,460px)}
+  .arch .frame{border-radius:var(--arch);overflow:hidden;aspect-ratio:4/5.2;position:relative;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+  .arch .frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);animation:kb 18s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.12) translateY(0)}to{transform:scale(1.22) translateY(-3%)}}
+  .arch .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,21,40,.75))}
+  .arch .ring{position:absolute;inset:-16px;border-radius:var(--arch);border:1px solid rgba(230,200,120,.45);pointer-events:none}
+  .arch .ring.r2{inset:-34px;border-color:rgba(230,200,120,.16)}
+  .arch .seal{position:absolute;bottom:-30px;inset-inline-start:-30px;width:126px;height:126px;z-index:3}
+  .seal svg{width:100%;height:100%;animation:spin 22s linear infinite}
+  .seal .core{position:absolute;inset:30px;border-radius:50%;background:var(--gold-grad);display:grid;place-items:center;color:var(--navy-2);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  .seal .core svg{width:30px;height:30px;animation:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .arch .cap{position:absolute;bottom:26px;inset-inline:0;text-align:center;z-index:2;font-weight:700;color:#fff;font-size:16px}
+  .arch .cap span{color:var(--gold-l)}
 
-  /* specs */
-  .specs{background:var(--navy);color:#fff}
-  .specs .sec-head p{color:#b9c5d6}
-  .specs .sec-head .kicker{color:var(--gold-l)}
-  .spec-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
-  .bag-view{background:radial-gradient(circle at 50% 40%,#21436f,#0b1d37 70%);border:1px solid var(--line);border-radius:26px;padding:28px;text-align:center}
-  .bag-view img{max-height:460px;margin-inline:auto;object-fit:contain;filter:drop-shadow(0 20px 30px rgba(0,0,0,.45))}
-  .toggle{display:inline-flex;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:999px;padding:4px;margin-top:20px}
-  .toggle button{font:inherit;font-weight:700;background:transparent;color:#cfd8e6;border:0;padding:8px 20px;border-radius:999px;cursor:pointer}
-  .toggle button[aria-pressed="true"]{background:var(--gold-grad);color:var(--navy-2)}
-  .bag-note{color:#b9c5d6;font-size:14px;margin-top:10px}
-  table.spec{width:100%;border-collapse:collapse;font-size:17px}
-  table.spec th,table.spec td{padding:15px 14px;border-bottom:1px solid rgba(200,155,78,.2);text-align:start;vertical-align:top}
-  table.spec th{color:var(--gold-l);font-weight:700;width:36%;white-space:nowrap}
-  table.spec tr:last-child th, table.spec tr:last-child td{border-bottom:0}
-  .spec-ctas{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:26px;height:42px;border:1.5px solid rgba(230,200,120,.5);border-radius:20px;z-index:2}
+  .scroll-cue::after{content:"";position:absolute;top:8px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold-l);animation:cue 1.8s var(--ease) infinite}
+  @keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
 
-  /* offer */
-  .offer{background:linear-gradient(180deg,var(--ivory),#f1ead9)}
-  .offer-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:var(--navy-2);color:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--line)}
-  .offer-box img{width:100%;height:100%;object-fit:cover;max-height:560px}
-  .offer-text{padding:40px}
-  .offer-text .pct{font-size:clamp(64px,9vw,110px);font-weight:800;line-height:1}
-  .offer-text h2{margin:6px 0 10px;font-size:clamp(26px,3vw,36px)}
+  /* hero load sequence */
+  .js .hero h1 .ln>span{transform:translateY(110%)}
+  .js .hero .origin,.js .hero .sub,.js .hero p.lead,.js .hero .ctas,.js .hero .facts{opacity:0;transform:translateY(24px)}
+  .js .arch .frame{clip-path:inset(100% 0 0 0 round 999px 999px 22px 22px)}
+  .js .arch .ring,.js .arch .seal{opacity:0}
+  .loaded .hero h1 .ln>span{transform:none;transition:transform 1.1s var(--ease)}
+  .loaded .hero h1 .ln:nth-child(2)>span{transition-delay:.12s}
+  .loaded .hero h1 .ln:nth-child(3)>span{transition-delay:.24s}
+  .loaded .hero .origin,.loaded .hero .sub,.loaded .hero p.lead,.loaded .hero .ctas,.loaded .hero .facts{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .loaded .hero .sub{transition-delay:.45s}.loaded .hero p.lead{transition-delay:.55s}.loaded .hero .ctas{transition-delay:.68s}.loaded .hero .facts{transition-delay:.8s}
+  .loaded .arch .frame{clip-path:inset(0 0 0 0 round 999px 999px 22px 22px);transition:clip-path 1.5s var(--ease) .2s}
+  .loaded .arch .ring,.loaded .arch .seal{opacity:1;transition:opacity 1s 1.2s}
+
+  /* ---------- marquee ---------- */
+  .marquee{background:var(--gold-grad);color:var(--navy-2);overflow:hidden;white-space:nowrap;padding:16px 0;font-weight:800;font-size:19px;position:relative;z-index:2}
+  .marquee .track{display:inline-flex;gap:0;animation:mq 34s linear infinite}
+  .marquee span{display:inline-flex;align-items:center;gap:22px;padding-inline:22px}
+  .marquee span::before{content:"";width:9px;height:9px;transform:rotate(45deg);background:var(--navy-2);display:block}
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
+  /* ---------- sections ---------- */
+  section{padding-block:110px;scroll-margin-top:76px;position:relative}
+  .head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+  .head h2{font-family:"Reem Kufi",sans-serif;font-size:clamp(34px,4.6vw,60px);line-height:1.15;margin:0;font-weight:700}
+  .head p{color:var(--muted);margin:0;max-width:44ch;font-size:18px}
+  .dark{background:var(--night);color:#fff}
+  .dark .head p{color:#a9b8cc}
+
+  /* reveal */
+  .js [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .js [data-reveal].in{opacity:1;transform:none}
+  .js [data-reveal="arch"]{transform:none;clip-path:inset(100% 0 0 0 round 999px 999px 22px 22px);opacity:1;transition:clip-path 1.3s var(--ease)}
+  .js [data-reveal="arch"].in{clip-path:inset(0 0 0 0 round 999px 999px 22px 22px)}
+
+  /* ---------- products ---------- */
+  .products{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:24px}
+  .prod{position:relative;border-radius:28px;overflow:hidden;background:#fff;border:1px solid #e9e1cd;display:flex;flex-direction:column;transform-style:preserve-3d;transition:box-shadow .5s var(--ease)}
+  .prod:hover{box-shadow:0 30px 60px rgba(16,40,74,.14)}
+  .prod.feature{grid-row:span 2;background:radial-gradient(600px 400px at 50% 30%,#1d3f70,var(--navy-2));color:#fff;border-color:var(--line)}
+  .prod .media{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--sand)}
+  .prod.feature .media{aspect-ratio:auto;flex:1;min-height:380px;background:transparent;display:grid;place-items:center}
+  .prod .media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .prod:hover .media img{transform:scale(1.06)}
+  .prod.feature .media img{width:auto;max-height:420px;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-14px) rotate(-1.5deg)}}
+  .prod.feature:hover .media img{transform:none}
+  .prod .glow{position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(230,200,120,.35),transparent 65%);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+  .prod .media.ph{background:radial-gradient(circle at 30% 30%,#22364f,#0b1d37);display:grid;place-items:center}
+  .prod .media.ph svg{width:110px;height:110px;color:var(--gold);animation:float 7s ease-in-out infinite}
+  .prod .badge{position:absolute;top:18px;inset-inline-end:18px;background:var(--navy);color:var(--gold-l);font-weight:800;font-size:14px;padding:6px 14px;border-radius:999px;z-index:2}
+  .prod .badge.sale{background:#B3261E;color:#fff;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(179,38,30,.55)}60%{box-shadow:0 0 0 12px rgba(179,38,30,0)}}
+  .prod .body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:8px}
+  .prod h3{font-family:"Reem Kufi",sans-serif;margin:0;font-size:28px;line-height:1.25;font-weight:700}
+  .prod.feature h3{font-size:38px}
+  .prod h3 .en{font-family:"Montserrat";font-size:14px;color:var(--gold-ink);display:block;letter-spacing:.12em;margin-top:4px;text-align:right}
+  .prod.feature h3 .en{color:var(--gold-l)}
+  .prod p{margin:0;color:var(--muted)}
+  .prod.feature p{color:#c3cfdf}
+  .prod ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .prod li{font-size:14px;padding:5px 12px;border-radius:999px;background:var(--sand);color:var(--navy)}
+  .prod.feature li{background:rgba(230,200,120,.12);color:var(--gold-l);border:1px solid var(--line)}
+  .prod .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .prod .actions .btn{padding:12px 20px;font-size:15px}
+  .prod .more{color:var(--gold-l);font-weight:700;text-decoration:none;align-self:center;padding:10px}
+
+  /* ---------- journey ---------- */
+  .journey{background:linear-gradient(180deg,var(--night),var(--navy-2));color:#fff;overflow:hidden}
+  .journey .head p{color:#a9b8cc}
+  .steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .rail{position:absolute;top:44px;inset-inline:12%;height:2px;background:rgba(230,200,120,.15)}
+  .rail i{position:absolute;inset-block:0;right:0;width:100%;background:var(--gold-grad);transform:scaleX(var(--p,0));transform-origin:right}
+  .step{position:relative;text-align:center}
+  .step .dot{width:88px;height:88px;margin:0 auto 22px;border-radius:50%;background:var(--navy-2);border:1.5px solid rgba(230,200,120,.4);display:grid;place-items:center;position:relative;z-index:1;transition:background .6s,border-color .6s,transform .6s var(--ease)}
+  .step .dot svg{width:38px;height:38px;color:var(--gold-l);transition:color .6s}
+  .step.on .dot{background:var(--gold-grad);border-color:transparent;transform:scale(1.06)}
+  .step.on .dot svg{color:var(--navy-2)}
+  .step .n{font-family:"Montserrat";font-weight:800;font-size:13px;color:var(--gold);letter-spacing:.14em}
+  .step h3{font-family:"Reem Kufi",sans-serif;margin:4px 0 6px;font-size:23px}
+  .step p{margin:0;color:#a9b8cc;font-size:15.5px;max-width:26ch;margin-inline:auto}
+  .step .use{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--gold-l);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+
+  /* ---------- specs ---------- */
+  .spec-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+  .bag-stage{position:relative;text-align:center}
+  .bag-stage .arch-bg{position:relative;border-radius:var(--arch);background:radial-gradient(circle at 50% 35%,#21436f,var(--navy-2) 70%);padding:56px 30px 40px;overflow:hidden}
+  .bag-stage .arch-bg::before{content:"";position:absolute;inset:14px;border-radius:var(--arch);border:1px solid var(--line)}
+  .bag-stage img{max-height:440px;margin-inline:auto;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(0,0,0,.5));position:relative;transition:transform .6s var(--ease),opacity .3s}
+  .bag-stage img.flip{transform:rotateY(90deg) scale(.9);opacity:0}
+  .toggle{display:inline-flex;background:var(--sand);border-radius:999px;padding:5px;margin-top:22px;position:relative}
+  .toggle button{font:inherit;font-weight:800;background:transparent;color:var(--navy);border:0;padding:9px 24px;border-radius:999px;cursor:pointer;position:relative;z-index:1;transition:color .3s}
+  .toggle .pill{position:absolute;top:5px;bottom:5px;border-radius:999px;background:var(--navy);transition:all .45s var(--ease)}
+  .toggle button[aria-pressed="true"]{color:var(--gold-l)}
+  .bag-note{color:var(--muted);font-size:15px;margin-top:12px}
+  .spec-list{margin:0;padding:0;list-style:none;border-top:1px solid #e3d9c2}
+  .spec-list li{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:18px 4px;border-bottom:1px solid #e3d9c2;transition:background .3s,padding .3s}
+  .spec-list li:hover{background:rgba(200,155,78,.07);padding-inline:14px}
+  .spec-list b{color:var(--gold-ink);font-weight:700}
+  .spec-ctas{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .spec-ctas .btn-ghost{color:var(--navy);border-color:var(--navy)}
+
+  /* ---------- offer ---------- */
+  .offer{background:var(--sand)}
+  .offer-box{display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;background:var(--night);color:#fff;border-radius:36px;overflow:hidden;position:relative}
+  .offer-box::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(230,200,120,.22),transparent 65%);top:-200px;right:-160px}
+  .offer-text{padding:56px;position:relative}
+  .offer-text .tag{display:inline-block;color:var(--gold-l);font-weight:700;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px}
+  .offer-text .pct{font-family:"Montserrat";font-size:clamp(90px,13vw,170px);font-weight:800;line-height:1;margin-top:10px;direction:ltr;text-align:right}
+  .offer-text h2{font-family:"Reem Kufi";margin:6px 0 10px;font-size:clamp(28px,3.2vw,40px)}
   .offer-text p{color:#c7d1df}
-  .countdown{display:flex;gap:10px;margin:18px 0 26px}
-  .countdown div{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 0;width:74px;text-align:center}
-  .countdown b{display:block;font-size:28px;color:var(--gold-l);font-family:"Montserrat",sans-serif}
-  .countdown small{font-size:13px;color:#b9c5d6}
+  .countdown{display:flex;gap:12px;margin:24px 0 30px}
+  .countdown div{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:16px;padding:12px 0;width:86px;text-align:center}
+  .countdown b{display:block;font-size:34px;color:var(--gold-l);font-family:"Montserrat";line-height:1.2}
+  .countdown small{font-size:13px;color:#a9b8cc}
+  .offer-box .pic{position:relative;overflow:hidden}
+  .offer-box .pic img{width:100%;height:100%;object-fit:cover}
 
-  /* why */
-  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .why{background:#fff;border:1px solid #e7e2d6;border-radius:var(--radius);padding:26px 22px}
-  .why h3{display:flex;align-items:center;gap:10px}
-  .why h3 svg{width:26px;height:26px;color:var(--gold-d);flex:none}
-  .why h3{margin:0 0 6px;font-size:20px}
-  .why p{margin:0;color:var(--muted);font-size:15.5px}
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start}
+  .gallery figure{margin:0}
+  .gallery figure:nth-child(even){margin-top:70px}
+  .gallery .ph{border-radius:var(--arch);overflow:hidden;aspect-ratio:4/5.4}
+  .gallery img{width:100%;height:118%;object-fit:cover;will-change:transform}
+  .gallery figcaption{font-family:"Reem Kufi";font-size:21px;margin-top:14px;text-align:center}
+  .gallery figcaption small{display:block;font-family:"Tajawal";color:var(--muted);font-size:14px}
 
-  /* gallery */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .gallery figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/5;position:relative}
-  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-  .gallery figure:hover img{transform:scale(1.05)}
-  .gallery figcaption{position:absolute;inset-inline:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(11,29,55,.9));color:#fff;font-weight:700}
+  /* ---------- contact ---------- */
+  .contact{background:radial-gradient(900px 600px at 50% 120%,rgba(200,155,78,.28),transparent 60%),var(--night);color:#fff;text-align:center;overflow:hidden}
+  .contact h2{font-family:"Reem Kufi";font-size:clamp(40px,6.4vw,88px);line-height:1.1;margin:0 0 18px}
+  .contact .lead{color:#b4c2d5;font-size:19px;margin:0 auto 40px;max-width:46ch}
+  .big-num{display:inline-block;font-family:"Montserrat";font-weight:800;font-size:clamp(34px,6vw,72px);letter-spacing:.04em;direction:ltr;text-decoration:none;margin-bottom:36px}
+  .contact .ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .contact .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;margin-top:56px;padding-top:30px;border-top:1px solid var(--line);color:#a9b8cc}
+  .contact .meta span,.contact .meta a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+  .contact .meta svg{width:20px;height:20px;color:var(--gold-l)}
+  .contact .meta a:hover{color:#fff}
 
-  /* contact */
-  .contact{background:radial-gradient(900px 500px at 20% 100%,#1a3c6e,var(--navy-2));color:#fff}
-  .contact .sec-head p{color:#b9c5d6}
-  .contact .sec-head .kicker{color:var(--gold-l)}
-  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .c-item{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:var(--radius);padding:28px;text-align:center;text-decoration:none;display:block;transition:background .2s}
-  a.c-item:hover{background:rgba(255,255,255,.09)}
-  .c-item svg{width:40px;height:40px;color:var(--gold-l);margin:0 auto 12px}
-  .c-item h3{margin:0 0 4px;font-size:20px}
-  .c-item p{margin:0;color:#cfd8e6}
-  .c-item .num{font-family:"Montserrat",sans-serif;font-size:20px;color:#fff;direction:ltr;unicode-bidi:isolate}
-
-  footer{background:#071427;color:#8ea0b8;text-align:center;padding:26px 16px calc(26px + env(safe-area-inset-bottom,0px));font-size:14px}
+  footer{background:#050e1c;color:#7f91aa;text-align:center;padding:26px 16px calc(26px + env(safe-area-inset-bottom,0px));font-size:14px}
   footer b{color:var(--gold-l)}
 
-  .fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-start:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  .fab{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));inset-inline-start:22px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.35);transition:transform .3s var(--ease)}
+  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ring 2.2s var(--ease) infinite}
+  @keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+  .fab:hover{transform:scale(1.08)}
   .fab svg{width:32px;height:32px;color:#fff}
 
   @media (max-width:980px){
     .links{display:none}
-    .hero .wrap,.spec-wrap,.offer-box{grid-template-columns:1fr}
-    .hero .wrap{padding-block:40px 56px;gap:32px}
-    .grid{grid-template-columns:1fr 1fr}
-    .why-grid{grid-template-columns:1fr 1fr}
+    .hero .wrap,.spec-wrap,.offer-box,.head{grid-template-columns:1fr}
+    .hero .wrap{padding-block:120px 90px;gap:70px}
+    .head{gap:14px;margin-bottom:40px}
+    .products{grid-template-columns:1fr}
+    .prod.feature{grid-row:auto}
+    .steps{grid-template-columns:1fr 1fr;row-gap:50px}
+    .rail{display:none}
     .gallery{grid-template-columns:1fr 1fr}
-    .contact-grid{grid-template-columns:1fr}
-    .offer-box img{max-height:420px}
+    .offer-box .pic{max-height:460px}
+    .spec-wrap{gap:50px}
   }
   @media (max-width:620px){
     body{font-size:16px}
-    section{padding-block:56px}
-    .grid,.why-grid{grid-template-columns:1fr}
+    section{padding-block:76px}
+    .nav{height:66px}
     .nav .btn span{display:none}
-    .nav .btn{padding:10px}
-    .brand b{font-size:19px}
-    .offer-text{padding:28px 22px}
-    table.spec th{white-space:normal}
+    .nav .btn{padding:11px}
+    .brand b{font-size:20px}
+    .brand img{width:42px;height:42px}
     .hero .ctas .btn{flex:1 1 100%}
+    .facts{gap:22px}
+    .facts b{font-size:24px}
+    .arch{width:min(86%,360px)}
+    .arch .seal{width:100px;height:100px;bottom:-24px;inset-inline-start:-18px}
+    .seal .core{inset:24px}
+    .steps{grid-template-columns:1fr}
+    .spec-list li{grid-template-columns:1fr;gap:2px}
+    .offer-text{padding:36px 24px}
+    .countdown div{width:74px}
+    .gallery{gap:14px}
+    .gallery figure:nth-child(even){margin-top:40px}
+    .gallery figcaption{font-size:17px}
+    .scroll-cue{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .js [data-reveal],.js .hero *{opacity:1!important;transform:none!important;clip-path:none!important}
+    .js .arch .frame{clip-path:none!important}
   }
 </style>
 </head>
@@ -190,27 +306,28 @@
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
-  <symbol id="i-cert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></g></symbol>
-  <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l-1 4H7z"/><path d="M7 7c-2 3-2 11 0 14h10c2-3 2-11 0-14"/><path d="M9 13h6"/></g></symbol>
   <symbol id="i-carbon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 4 3 7v5l4 3 4-3V7z"/><path d="M17 9l-4 3v5l4 3 4-3v-5z"/><path d="M11 12l2 0"/></g></symbol>
-  <symbol id="i-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></g></symbol>
+  <symbol id="i-rock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 18 7 9l5-3 6 3 3 9z"/><path d="M7 9l3 5 2-8M10 14l8-5M10 14l-7 4M10 14l11 4"/></g></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></g></symbol>
+  <symbol id="i-bar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 18h16l-3-7H7z"/><path d="M8 11 10 6h4l2 5"/><path d="M12 2v2M18 4l-1 1.5M6 4l1 1.5"/></g></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2.1A21 21 0 0 0 14.6 2C12.2 2 10.6 3.4 10.6 6v2H8v3.2h2.6V22H14V11.2h2.6L17 8z"/></symbol>
 </svg>
 
 <div class="offer-strip" id="offerStrip" hidden>
-  🔥 عرض لفترة محدودة: خصم <b>10%</b> على جينشان JIN CHAN لحد 30 نوفمبر — <a href="#offer">التفاصيل</a>
+  عرض لفترة محدودة: خصم <b>10%</b> على جينشان JIN CHAN لحد 30 نوفمبر. <a href="#offer">التفاصيل</a>
 </div>
 
-<header>
+<header id="hdr">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="أكوا جولد">
-      <img src="img/icon.png" alt="" width="46" height="46">
+      <img src="img/icon.png" alt="" width="48" height="48">
       <span><b>أكوا جولد</b><small class="en">AQUA GOLD</small></span>
     </a>
     <nav class="links" aria-label="أقسام الموقع">
       <a href="#products">المنتجات</a>
-      <a href="#jinchan">مواصفات جينشان</a>
-      <a href="#offer" data-offer-link>العروض</a>
+      <a href="#journey">رحلة الذهب</a>
+      <a href="#jinchan">المواصفات</a>
+      <a href="#offer" data-offer-link>العرض</a>
       <a href="#contact">تواصل معانا</a>
     </nav>
     <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg><span>واتساب</span></a>
@@ -219,70 +336,104 @@
 
 <main id="top">
   <section class="hero" style="padding:0">
+    <canvas id="dust" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div>
-
-        <h1>جينشان <span class="gold-text">JIN CHAN</span> الأصلي<span class="en gold-text">Metallic Ore Dressing Agent</span></h1>
-        <p class="lead"><b style="color:var(--gold-l)">الأصلي من مصدره.</b> مادة استخلاص الذهب لمواقع ومشاريع التعدين في مصر. ومعاها الفحم النشط ومعدات التنقية، من أكوا جولد في أسوان.</p>
+      <div class="hero-copy">
+        <div class="origin"><i></i>من أسوان لمواقع التعدين في مصر</div>
+        <h1>
+          <span class="ln"><span>جينشان</span></span>
+          <span class="ln"><span class="latin gold-text shine">JIN CHAN</span></span>
+          <span class="ln"><span>الأصلي من مصدره</span></span>
+        </h1>
+        <span class="sub">METALLIC ORE DRESSING AGENT</span>
+        <p class="lead">مادة استخلاص الذهب من الخام، ومعاها <b>الفحم النشط</b> و<b>معدات التنقية</b>. كل اللي موقعك محتاجه من مكان واحد.</p>
         <div class="ctas">
-          <a class="btn btn-wa" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN" href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر</a>
+          <a class="btn btn-gold" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN" href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر</a>
           <a class="btn btn-ghost" href="#products">شوف المنتجات</a>
         </div>
-        <div class="chips">
-          <span class="chip">شيكارة <b>25 كجم</b></span>
-          <span class="chip">جودة <b class="en">ISO 9001:2015</b></span>
-          <span class="chip">صلاحية <b>سنتين</b></span>
-          <span class="chip">منشأ <b>الصين</b></span>
+        <div class="facts">
+          <div><b data-count="25">25</b><small>كجم في الشيكارة</small></div>
+          <div><b data-count="2">2</b><small>سنتين صلاحية</small></div>
+          <div><b class="en">ISO 9001</b><small>جودة معتمدة</small></div>
         </div>
       </div>
-      <div class="hero-img">
-        <img src="img/hero.webp" alt="شيكارة جينشان JIN CHAN في موقع تعدين وقت الغروب" width="1400" height="1875" fetchpriority="high">
-        <span class="tag">خامات وتكنولوجيا <span class="gold-text">تنقية الذهب</span></span>
+      <div class="arch">
+        <span class="ring r2"></span><span class="ring"></span>
+        <div class="frame">
+          <img src="img/hero.webp" alt="شيكارة جينشان JIN CHAN في موقع تعدين وقت الغروب" width="1400" height="1875" fetchpriority="high">
+          <div class="cap">خامات وتكنولوجيا <span>تنقية الذهب</span></div>
+        </div>
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-family="Montserrat" font-weight="700" font-size="10.5" letter-spacing="3.2" fill="#E6C878"><textPath href="#circ">ORIGINAL • JIN CHAN • AQUA GOLD • </textPath></text></svg>
+          <div class="core"><svg><use href="#i-shield"/></svg></div>
+        </div>
       </div>
     </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
   </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track" id="mq">
+      <span>جينشان JIN CHAN الأصلي</span><span>شيكارة 25 كجم سادة ومطبوعة</span><span>ISO 9001:2015</span><span>الفحم النشط</span><span>معدات تنقية الذهب</span><span>أسوان، مصر</span>
+    </div>
+  </div>
 
   <section id="products">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">منتجاتنا</span>
+      <div class="head" data-reveal>
         <h2>كل اللي موقعك محتاجه للتنقية</h2>
         <p>اختار المنتج واسألنا على واتساب، وهنرد عليك بالسعر والكمية المتاحة.</p>
       </div>
-      <div class="grid" id="productGrid"></div>
+      <div class="products" id="productGrid"></div>
     </div>
   </section>
 
-  <section class="specs" id="jinchan">
+  <section class="journey" id="journey">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">مواصفات المنتج</span>
-        <h2>جينشان <span class="gold-text en">JIN CHAN</span></h2>
-        <p>البيانات زي ما هي مكتوبة على الشيكارة الأصلية.</p>
+      <div class="head" data-reveal>
+        <h2>رحلة الذهب من الخام</h2>
+        <p>منتجاتنا بتشتغل في كل مرحلة من مراحل الاستخلاص بالترشيح.</p>
       </div>
+      <div class="steps" id="steps">
+        <div class="rail"><i></i></div>
+        <div class="step"><div class="dot"><svg><use href="#i-rock"/></svg></div><span class="n en">01</span><h3>تجهيز الخام</h3><p>تكسير الخام وتكويمه في الموقع أو تحميله في الخزان.</p></div>
+        <div class="step"><div class="dot"><svg><use href="#i-drop"/></svg></div><span class="n en">02</span><h3>الترشيح</h3><p>رش محلول جينشان على الكومة عشان يذوّب الذهب من الخام.</p><span class="use">جينشان JIN CHAN</span></div>
+        <div class="step"><div class="dot"><svg><use href="#i-carbon"/></svg></div><span class="n en">03</span><h3>الامتصاص</h3><p>المحلول بيعدي على الفحم النشط اللي بيمسك الذهب.</p><span class="use">الفحم النشط</span></div>
+        <div class="step"><div class="dot"><svg><use href="#i-bar"/></svg></div><span class="n en">04</span><h3>الاستخلاص</h3><p>فصل الذهب من الفحم وتنقيته بالمعدات.</p><span class="use">معدات التنقية</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="jinchan">
+    <div class="wrap">
       <div class="spec-wrap">
-        <div class="bag-view">
-          <img id="bagImg" src="img/jinchan-printed.webp" alt="شيكارة جينشان مطبوعة" width="619" height="899" loading="lazy">
+        <div class="bag-stage" data-reveal>
+          <div class="arch-bg">
+            <img id="bagImg" src="img/jinchan-printed.webp" alt="شيكارة جينشان مطبوعة" width="619" height="899" loading="lazy">
+          </div>
           <div class="toggle" role="group" aria-label="نوع الشيكارة">
+            <span class="pill" id="pill"></span>
             <button type="button" aria-pressed="true" data-bag="printed">مطبوعة</button>
             <button type="button" aria-pressed="false" data-bag="plain">سادة</button>
           </div>
-          <div class="bag-note">السادة والمطبوعة نفس الخامة بالظبط، الفرق في الشيكارة بس.</div>
+          <div class="bag-note">نفس الخامة بالظبط، الفرق في الشيكارة بس.</div>
         </div>
-        <div>
-          <table class="spec">
-            <tbody>
-              <tr><th>الاسم على الشيكارة</th><td class="en" style="text-align:right">JIN CHAN — Metallic Ore Dressing Agent</td></tr>
-              <tr><th>الاستخدام</th><td>استخلاص الذهب من الخام (ترشيح الكومة والخزان)</td></tr>
-              <tr><th>بلد المنشأ</th><td>الصين</td></tr>
-              <tr><th>العبوة</th><td>شيكارة 25 كجم، سادة أو مطبوعة</td></tr>
-              <tr><th>الصلاحية</th><td>سنتين</td></tr>
-              <tr><th>الجودة</th><td class="en" style="text-align:right">ISO 9001:2015</td></tr>
-              <tr><th>الموديل</th><td class="en" style="text-align:right">SHJCA02</td></tr>
-            </tbody>
-          </table>
+        <div data-reveal>
+          <div class="head" style="grid-template-columns:1fr;margin-bottom:30px;gap:12px">
+            <h2>مواصفات <span class="en">JIN CHAN</span></h2>
+            <p>البيانات زي ما هي مكتوبة على الشيكارة الأصلية.</p>
+          </div>
+          <ul class="spec-list">
+            <li><b>الاسم على الشيكارة</b><span class="en" style="text-align:right">JIN CHAN, Metallic Ore Dressing Agent</span></li>
+            <li><b>الاستخدام</b><span>استخلاص الذهب من الخام (ترشيح الكومة والخزان)</span></li>
+            <li><b>بلد المنشأ</b><span>الصين</span></li>
+            <li><b>العبوة</b><span>شيكارة 25 كجم، سادة أو مطبوعة</span></li>
+            <li><b>الصلاحية</b><span>سنتين</span></li>
+            <li><b>الجودة</b><span class="en" style="text-align:right">ISO 9001:2015</span></li>
+            <li><b>الموديل</b><span class="en" style="text-align:right">SHJCA02</span></li>
+          </ul>
           <div class="spec-ctas">
-            <a class="btn btn-gold" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN، الكمية: " href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر على جينشان</a>
+            <a class="btn btn-gold" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN، الكمية: " href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر</a>
             <a class="btn btn-ghost" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصل بينا</a>
           </div>
         </div>
@@ -292,75 +443,59 @@
 
   <section class="offer" id="offer" hidden>
     <div class="wrap">
-      <div class="offer-box">
+      <div class="offer-box" data-reveal>
         <div class="offer-text">
-          <span class="eyebrow">عرض لفترة محدودة</span>
-          <div class="pct gold-text">10%</div>
+          <span class="tag">عرض لفترة محدودة</span>
+          <div class="pct gold-text shine">10%</div>
           <h2>خصم على جينشان JIN CHAN</h2>
-          <p>العرض ساري من 21 لحد 30 نوفمبر. كلمنا على واتساب واحجز الكمية اللي محتاجها.</p>
+          <p>العرض ساري لحد 30 نوفمبر. كلمنا على واتساب واحجز الكمية اللي محتاجها.</p>
           <div class="countdown" aria-label="الوقت الباقي على نهاية العرض">
             <div><b id="cdD">0</b><small>يوم</small></div>
             <div><b id="cdH">0</b><small>ساعة</small></div>
             <div><b id="cdM">0</b><small>دقيقة</small></div>
+            <div><b id="cdS">0</b><small>ثانية</small></div>
           </div>
           <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفيد من عرض خصم 10% على جينشان" href="#contact"><svg><use href="#i-wa"/></svg>احجز العرض</a>
         </div>
-        <img src="img/offer.webp" alt="بوستر عرض خصم 10% على جينشان" width="1000" height="1250" loading="lazy">
+        <div class="pic"><img src="img/offer.webp" alt="بوستر عرض خصم 10% على جينشان" width="1000" height="1250" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <section id="why">
+  <section id="gallery">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">ليه أكوا جولد؟</span>
-        <h2>الأصلي من مصدره</h2>
+      <div class="head" data-reveal>
+        <h2>من المخزن للموقع</h2>
+        <p>البضاعة جاهزة في أسوان، وبتوصل لحد موقعك.</p>
       </div>
-      <div class="why-grid">
-        <div class="why"><h3><svg aria-hidden="true"><use href="#i-shield"/></svg>منتج أصلي</h3><p>جينشان JIN CHAN الأصلي بالبيانات الكاملة على الشيكارة.</p></div>
-        <div class="why"><h3><svg aria-hidden="true"><use href="#i-cert"/></svg>جودة معتمدة</h3><p>المصنع حاصل على شهادة <span class="en">ISO 9001:2015</span>.</p></div>
-        <div class="why"><h3><svg aria-hidden="true"><use href="#i-bag"/></svg>سادة أو مطبوعة</h3><p>شيكارة 25 كجم، وتختار الشكل اللي يناسبك والخامة واحدة.</p></div>
-        <div class="why"><h3><svg aria-hidden="true"><use href="#i-pin"/></svg>من أسوان</h3><p>قريبين من مواقع ومشاريع استخلاص الذهب في الجنوب.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
       <div class="gallery">
-        <figure><img src="img/warehouse.webp" alt="شكاير جينشان في المخزن" loading="lazy" width="896" height="1120"><figcaption>المخزن</figcaption></figure>
-        <figure><img src="img/truck.webp" alt="عربية محملة بشكاير جينشان" loading="lazy" width="896" height="1120"><figcaption>التحميل</figcaption></figure>
-        <figure><img src="img/pit.webp" alt="شيكارة جينشان في موقع تعدين" loading="lazy" width="896" height="1120"><figcaption>في الموقع</figcaption></figure>
-        <figure><img src="img/heap.webp" alt="أكوام ترشيح في موقع استخلاص ذهب" loading="lazy" width="896" height="1120"><figcaption>ترشيح الكومة</figcaption></figure>
+        <figure><div class="ph" data-reveal="arch"><img data-par src="img/warehouse.webp" alt="شكاير جينشان في المخزن" loading="lazy" width="896" height="1120"></div><figcaption>المخزن<small>كميات جاهزة</small></figcaption></figure>
+        <figure><div class="ph" data-reveal="arch"><img data-par src="img/truck.webp" alt="عربية محملة بشكاير جينشان" loading="lazy" width="896" height="1120"></div><figcaption>التحميل<small>شحن للمواقع</small></figcaption></figure>
+        <figure><div class="ph" data-reveal="arch"><img data-par src="img/pit.webp" alt="شيكارة جينشان في موقع تعدين" loading="lazy" width="896" height="1120"></div><figcaption>في الموقع<small>جاهزة للاستخدام</small></figcaption></figure>
+        <figure><div class="ph" data-reveal="arch"><img data-par src="img/heap.webp" alt="أكوام ترشيح في موقع استخلاص ذهب" loading="lazy" width="896" height="1120"></div><figcaption>ترشيح الكومة<small>مرحلة الاستخلاص</small></figcaption></figure>
       </div>
     </div>
   </section>
 
   <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">تواصل معانا</span>
-        <h2>اسأل عن السعر والكمية</h2>
-        <p>أسرع طريقة إنك تكلمنا على واتساب.</p>
+    <div class="wrap" data-reveal>
+      <h2>محتاج كمية؟ <span class="gold-text shine">كلمنا</span></h2>
+      <p class="lead">ابعت الكمية والمكان على واتساب، وهنرد عليك بالسعر والمتاح.</p>
+      <a class="big-num gold-text" data-tel href="#contact">0128 666 5262</a>
+      <div class="ctas">
+        <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg>كلمنا على واتساب</a>
+        <a class="btn btn-ghost" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصال</a>
       </div>
-      <div class="contact-grid">
-        <a class="c-item" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact">
-          <svg><use href="#i-wa"/></svg><h3>واتساب</h3><p class="num">01286665262</p>
-        </a>
-        <a class="c-item" data-tel href="#contact">
-          <svg><use href="#i-phone"/></svg><h3>اتصال</h3><p class="num">01286665262</p>
-        </a>
-        <div class="c-item">
-          <svg><use href="#i-pin"/></svg><h3>المكان</h3><p>أسوان، مصر</p>
-        </div>
+      <div class="meta">
+        <span><svg><use href="#i-pin"/></svg>أسوان، مصر</span>
+        <a href="https://www.facebook.com/share/1AAuwv36dU/" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>صفحتنا على فيسبوك</a>
       </div>
-      <p style="text-align:center;margin-top:26px;color:#b9c5d6"><svg style="width:18px;height:18px;vertical-align:-3px;color:var(--gold-l)"><use href="#i-fb"/></svg> تابعنا على فيسبوك: <a href="https://www.facebook.com/share/1AAuwv36dU/" target="_blank" rel="noopener" style="color:#fff;font-weight:700">أكوا جولد Aqua Gold</a></p>
     </div>
   </section>
 </main>
 
 <footer>
-  © <span id="yr">2026</span> <b>أكوا جولد</b> <span class="en">Aqua Gold</span> · خامات وتكنولوجيا تنقية الذهب · أسوان، مصر
+  © <span id="yr">2026</span> <b>أكوا جولد</b> <span class="en">Aqua Gold</span>، خامات وتكنولوجيا تنقية الذهب، أسوان
 </footer>
 
 <a class="fab" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact" aria-label="كلمنا على واتساب"><svg><use href="#i-wa"/></svg></a>
@@ -368,27 +503,27 @@
 <script>
 /* ===== البيانات: عدّل هنا ===== */
 const PHONE = "201286665262";           // رقم الواتساب والاتصال بالصيغة الدولية
-const OFFER_END = "2026-11-30T23:59:59+02:00"; // نهاية العرض (توقيت مصر) — بعدها العرض يختفي لوحده
+const OFFER_END = "2026-11-30T23:59:59+02:00"; // نهاية العرض (توقيت مصر)، بعدها العرض يختفي لوحده
 
 const PRODUCTS = [
   {
     name: "جينشان", en: "JIN CHAN",
-    img: "img/jinchan-printed.webp", contain: true,
+    img: "img/jinchan-printed.webp", feature: true,
     badge: "الأكثر طلبًا", sale: true,
     desc: "مادة استخلاص الذهب من الخام، لترشيح الكومة والخزان.",
-    points: ["شيكارة 25 كجم سادة أو مطبوعة", "صلاحية سنتين", "ISO 9001:2015"],
+    points: ["شيكارة 25 كجم", "سادة أو مطبوعة", "صلاحية سنتين", "ISO 9001:2015"],
     msg: "السلام عليكم، عايز عرض سعر على جينشان JIN CHAN",
     more: "#jinchan"
   },
   {
-    name: "الفحم النشط", en: "Activated Carbon",
+    name: "الفحم النشط", en: "ACTIVATED CARBON",
     icon: "i-carbon",
-    desc: "فحم نشط لمراحل التنقية والاستخلاص.",
-    points: ["اسألنا عن الأنواع والعبوات المتاحة"],
+    desc: "فحم نشط لمرحلة امتصاص الذهب من المحلول.",
+    points: ["اسألنا عن الأنواع والعبوات"],
     msg: "السلام عليكم، عايز أستفسر عن الفحم النشط: الأنواع والسعر"
   },
   {
-    name: "معدات تنقية الذهب", en: "Refining Equipment",
+    name: "معدات تنقية الذهب", en: "REFINING EQUIPMENT",
     img: "img/heap.webp",
     desc: "معدات لمواقع ومشاريع استخلاص وتنقية الذهب.",
     points: ["اسألنا عن المعدات المتاحة"],
@@ -399,10 +534,12 @@ const PRODUCTS = [
 
 const wa = (t) => `https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
 const offerOn = Date.now() < new Date(OFFER_END).getTime();
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
-  <article class="card">
-    <div class="media${p.contain ? " contain" : ""}${p.icon ? " placeholder" : ""}">
+  <article class="prod${p.feature ? " feature" : ""}" data-reveal${p.feature ? " data-tilt" : ""}>
+    <div class="media${p.icon ? " ph" : ""}">
+      ${p.feature ? `<span class="glow"></span>` : ""}
       ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : `<svg><use href="#${p.icon}"/></svg>`}
       ${p.sale && offerOn ? `<span class="badge sale">خصم 10%</span>` : p.badge ? `<span class="badge">${p.badge}</span>` : ""}
     </div>
@@ -411,8 +548,8 @@ document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
       <p>${p.desc}</p>
       <ul>${p.points.map(x => `<li>${x}</li>`).join("")}</ul>
       <div class="actions">
-        <a class="btn btn-wa" href="${wa(p.msg)}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>اسأل على واتساب</a>
-        ${p.more ? `<a class="btn" style="color:var(--navy);padding-top:10px" href="${p.more}">المواصفات ←</a>` : ""}
+        <a class="btn ${p.feature ? "btn-gold" : "btn-wa"}" href="${wa(p.msg)}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>اسأل على واتساب</a>
+        ${p.more ? `<a class="more" href="${p.more}">شوف المواصفات</a>` : ""}
       </div>
     </div>
   </article>`).join("");
@@ -420,24 +557,112 @@ document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
 document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + PHONE; });
 
-const bags = { printed: ["img/jinchan-printed.webp", "شيكارة جينشان مطبوعة"], plain: ["img/jinchan-plain.webp", "شيكارة جينشان سادة"] };
-document.querySelectorAll("[data-bag]").forEach(b => b.addEventListener("click", () => {
-  const img = document.getElementById("bagImg");
-  [img.src, img.alt] = bags[b.dataset.bag];
-  document.querySelectorAll("[data-bag]").forEach(x => x.setAttribute("aria-pressed", x === b));
-}));
+/* hero load */
+addEventListener("load", () => requestAnimationFrame(() => document.documentElement.classList.add("loaded")));
+setTimeout(() => document.documentElement.classList.add("loaded"), 1800);
 
+/* header */
+const hdr = document.getElementById("hdr");
+const onScrollHdr = () => hdr.classList.toggle("solid", scrollY > 40);
+
+/* marquee: duplicate content for a seamless loop */
+const mq = document.getElementById("mq"); mq.innerHTML += mq.innerHTML;
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll("[data-reveal]").forEach((el, i) => { el.style.transitionDelay = (el.closest(".products,.gallery") ? (i % 4) * 0.12 : 0) + "s"; io.observe(el); });
+
+/* journey rail fills while scrolling */
+const steps = document.getElementById("steps"), rail = steps.querySelector(".rail i"), stepEls = [...steps.querySelectorAll(".step")];
+const onScrollJourney = () => {
+  const r = steps.getBoundingClientRect(), vh = innerHeight;
+  const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .6)));
+  rail.style.setProperty("--p", p);
+  stepEls.forEach((s, i) => s.classList.toggle("on", innerWidth > 980 ? p >= i / 3 - .02 && p > 0 : s.getBoundingClientRect().top < vh * .7));
+};
+
+/* gallery parallax */
+const pars = [...document.querySelectorAll("[data-par]")];
+const onScrollPar = () => pars.forEach((img, i) => {
+  const r = img.parentElement.getBoundingClientRect();
+  const k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+  img.style.transform = `translateY(${(-8 + k * (i % 2 ? 10 : 6)).toFixed(2)}%)`;
+});
+
+let ticking = false;
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScrollHdr(); onScrollJourney(); if (!calm) onScrollPar(); ticking = false; }); } }, { passive: true });
+onScrollHdr(); onScrollJourney(); if (!calm) onScrollPar();
+
+/* count-up */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.count, t0 = performance.now();
+  if (calm) return;
+  const step = t => { const k = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+  el.textContent = 0; setTimeout(() => requestAnimationFrame(step), 900);
+}));
+document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+
+/* tilt on the featured product */
+if (!calm && matchMedia("(pointer:fine)").matches) document.querySelectorAll("[data-tilt]").forEach(c => {
+  c.addEventListener("mousemove", e => { const r = c.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(1200px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`; });
+  c.addEventListener("mouseleave", () => { c.style.transition = "transform .6s cubic-bezier(.2,.7,.1,1)"; c.style.transform = ""; setTimeout(() => c.style.transition = "", 600); });
+});
+
+/* bag toggle */
+const bags = { printed: ["img/jinchan-printed.webp", "شيكارة جينشان مطبوعة"], plain: ["img/jinchan-plain.webp", "شيكارة جينشان سادة"] };
+const pill = document.getElementById("pill"), bagBtns = [...document.querySelectorAll("[data-bag]")];
+const placePill = b => { pill.style.width = b.offsetWidth + "px"; pill.style.left = b.offsetLeft + "px"; };
+new Image().src = bags.plain[0];
+bagBtns.forEach(b => b.addEventListener("click", () => {
+  if (b.getAttribute("aria-pressed") === "true") return;
+  const img = document.getElementById("bagImg");
+  bagBtns.forEach(x => x.setAttribute("aria-pressed", x === b)); placePill(b);
+  img.classList.add("flip");
+  setTimeout(() => { [img.src, img.alt] = bags[b.dataset.bag]; img.classList.remove("flip"); }, calm ? 0 : 320);
+}));
+const fixPill = () => placePill(bagBtns.find(x => x.getAttribute("aria-pressed") === "true"));
+addEventListener("resize", fixPill); document.fonts && document.fonts.ready.then(fixPill); fixPill();
+
+/* gold dust in the hero */
+(() => {
+  const cv = document.getElementById("dust"), ctx = cv.getContext("2d"); if (calm) return;
+  let W, H, pts = [], dpr = Math.min(2, devicePixelRatio || 1), run = true;
+  const size = () => { W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(90, W * H / 14000)); pts = Array.from({ length: n }, () => mk(true)); };
+  const mk = (any) => ({ x: Math.random() * W, y: any ? Math.random() * H : H + 10, r: Math.random() * 1.8 + .4, v: Math.random() * .35 + .12, d: Math.random() * Math.PI * 2, a: Math.random() * .6 + .25 });
+  const draw = () => {
+    if (!run) return; ctx.clearRect(0, 0, W, H);
+    for (const p of pts) {
+      p.y -= p.v; p.d += .01; p.x += Math.sin(p.d) * .25;
+      if (p.y < -10) Object.assign(p, mk(false));
+      const tw = p.a * (.6 + .4 * Math.sin(p.d * 3));
+      ctx.beginPath(); ctx.fillStyle = `rgba(236,206,130,${tw})`; ctx.shadowColor = "rgba(230,200,120,.9)"; ctx.shadowBlur = p.r * 6;
+      ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  };
+  size(); addEventListener("resize", size);
+  new IntersectionObserver(([e]) => { const was = run; run = e.isIntersecting; if (run && !was) draw(); }).observe(cv);
+  draw();
+})();
+
+/* offer */
 if (offerOn) {
   document.getElementById("offer").hidden = false;
-  document.getElementById("offerStrip").hidden = false;
+  const strip = document.getElementById("offerStrip"); strip.hidden = false;
+  document.body.classList.add("has-strip");
+  const setStrip = () => document.documentElement.style.setProperty("--strip-h", strip.offsetHeight + "px");
+  setStrip(); addEventListener("resize", setStrip);
   const end = new Date(OFFER_END).getTime();
   const tick = () => {
     const s = Math.max(0, (end - Date.now()) / 1000);
     cdD.textContent = Math.floor(s / 86400);
     cdH.textContent = Math.floor(s % 86400 / 3600);
     cdM.textContent = Math.floor(s % 3600 / 60);
+    cdS.textContent = Math.floor(s % 60);
   };
-  tick(); setInterval(tick, 30000);
+  tick(); setInterval(tick, 1000);
 } else {
   document.querySelectorAll("[data-offer-link]").forEach(a => a.remove());
 }
