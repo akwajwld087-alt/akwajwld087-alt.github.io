@@ -312,9 +312,11 @@
   .story-note svg{width:20px;height:20px;flex:none;color:var(--gold-l);margin-top:3px}
   .sv-frame.carbon{background:radial-gradient(circle at 50% 40%,#1d5d99,#08345F 70%);display:grid;place-items:center}
   .sv-frame.carbon::after{display:none}
-  .carbon-art{position:relative;width:62%;aspect-ratio:1}
+  .sv-frame.carbon{display:block}
+  .sv-frame.carbon .c-bag{position:absolute;left:14%;top:12%;width:auto;height:62%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45));transform:rotate(-4deg)}
+  .carbon-art{position:absolute;right:10%;bottom:20%;width:40%;aspect-ratio:1}
   .carbon-art .gr{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a4f58,#16181c 70%);box-shadow:inset -6px -8px 14px rgba(0,0,0,.5)}
-  .carbon-art .au{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--gold-grad);animation:catch 4s var(--ease) infinite}
+  .carbon-art .au{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold-grad);animation:catch 4s var(--ease) infinite}
   @keyframes catch{0%{transform:translate(var(--fx),var(--fy)) scale(.4);opacity:0}25%{opacity:1}70%,100%{transform:translate(0,0) scale(1);opacity:1}}
   .sv-frame.carbon .cap-art{position:absolute;bottom:60px;inset-inline:0;text-align:center;font-weight:800;color:#cfe3f5;z-index:2}
   .sv-tag{position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(12,31,58,.75);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--gold-l);font-weight:800;border-radius:999px;padding:6px 18px;font-size:15px;white-space:nowrap}
@@ -813,7 +815,7 @@
             <div class="sv-frame white"><img src="img/eq-ballmill.webp" alt="" loading="lazy"></div>
             <div class="sv-frame white"><img src="img/eq-table.webp" alt="" loading="lazy"></div>
             <div class="sv-frame"><img src="img/pit.webp" alt="" loading="lazy"></div>
-            <div class="sv-frame carbon"><div class="carbon-art"></div><div class="cap-art">الفحم بيمسك ذرات الدهب</div></div>
+            <div class="sv-frame carbon"><img class="c-bag" src="img/carbon-bag-cut.webp" alt="" loading="lazy"><div class="carbon-art"></div><div class="cap-art">الفحم بيمسك ذرات الدهب</div></div>
             <div class="sv-frame"><img src="img/gold-bars.webp" alt="" loading="lazy"></div>
             <span class="sv-tag" id="svTag">الخام</span>
             <div class="sv-dots" id="svDots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -848,7 +850,7 @@
             <a class="prod-tag" href="#jinchan"><svg viewBox="0 0 24 30"><use href="#i-dropc"/></svg>جينشان JIN CHAN</a>
           </article>
           <article class="ch" data-tag="الفحم النشط">
-            <div class="ch-img"><div class="sv-frame carbon"><div class="carbon-art"></div></div></div>
+            <div class="ch-img"><div class="sv-frame carbon"><img class="c-bag" src="img/carbon-bag-cut.webp" alt="شيكارة الفحم النشط" loading="lazy"><div class="carbon-art"></div></div></div>
             <span class="step-n">5</span>
             <h3>الفحم النشط بيمسك الدهب</h3>
             <p>المحلول اللي فيه الدهب بيعدّي على الفحم النشط. الفحم بيمسك ذرات الدهب ويسيب الباقي يعدّي.</p>
