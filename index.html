@@ -168,6 +168,39 @@
   .js [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .js [data-reveal].in{opacity:1;transform:none}
 
+  /* ---------- equipment ---------- */
+  .equip-sec{background:linear-gradient(180deg,var(--mist),var(--ivory))}
+  .eq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .eq{background:#fff;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 34px rgba(16,40,74,.07);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+  .eq:hover{box-shadow:0 26px 54px rgba(16,40,74,.14);transform:translateY(-4px)}
+  .eq-media{position:relative;aspect-ratio:1/1;background:#fff;display:grid;place-items:center;padding:14px;border-bottom:1px solid var(--mist)}
+  .eq-media img{width:100%;height:100%;object-fit:contain;transition:transform 1s var(--ease)}
+  .eq:hover .eq-media img{transform:scale(1.05)}
+  .eq-step{position:absolute;top:14px;inset-inline-start:14px;background:var(--mist);color:var(--aqua);font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px;z-index:1}
+  .eq-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .eq h3{margin:0;font-size:22px;font-weight:900;line-height:1.3}
+  .eq h3 .en{display:block;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.12em;color:var(--gold-ink);margin-top:2px}
+  .eq p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.7}
+  .eq ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+  .eq li{font-size:13.5px;padding:3px 11px;border-radius:999px;background:var(--cream);color:var(--gold-ink);font-weight:700;unicode-bidi:isolate}
+  .eq-ask{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:8px;color:var(--wa);font-weight:800;text-decoration:none;font-size:15.5px}
+  .eq-ask svg{width:20px;height:20px}
+  .eq-ask:hover{text-decoration:underline}
+  .line-card{margin-top:48px;border-radius:var(--r);background:radial-gradient(700px 420px at 85% 0%,#1d4a85,var(--navy-2) 70%);color:#fff;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;padding:48px}
+  .lc-kick{color:var(--gold-l);font-weight:800;font-size:16px}
+  .line-card h3{font-size:clamp(28px,3.2vw,40px);font-weight:900;margin:8px 0 10px;line-height:1.25}
+  .line-card p{color:#c3cfdf;margin:0 0 22px}
+  .lc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px}
+  .lc-stats div{background:rgba(255,255,255,.06);border-radius:20px;padding:14px 16px}
+  .lc-stats b{display:block;font-family:Montserrat,sans-serif;font-size:28px;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lc-stats span{font-size:14px;color:#c3cfdf;line-height:1.5;display:block}
+  .lc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;align-self:center}
+  .lc-list li{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border-radius:18px;padding:10px 14px;font-weight:700;font-size:17px}
+  .lc-list b{flex:0 0 64px;font-family:Montserrat,sans-serif;font-size:22px;color:var(--navy);background:var(--gold-grad);border-radius:14px;text-align:center;padding:6px 0}
+  .lc-list small{display:block;font-weight:500;color:#a9b8cc;font-size:13.5px;text-align:right}
+  .prod .media.fit{background:#fff}
+  .prod .media.fit img{object-fit:contain;padding:14px}
+
   /* ---------- products ---------- */
   .products-sec{background:var(--ivory)}
   .products{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:24px}
@@ -425,6 +458,8 @@
     .drop-stage{width:min(80%,400px)}
     .sc-grid{grid-template-columns:repeat(3,1fr)}
     .products{grid-template-columns:1fr}
+    .eq-grid{grid-template-columns:repeat(2,1fr)}
+    .line-card{grid-template-columns:1fr;padding:32px 22px}
     .prod.feature{grid-row:auto}
     .story-grid{grid-template-columns:1fr;gap:0}
     .sv{display:none}
@@ -450,6 +485,17 @@
   @media (max-width:620px){
     body{font-size:16.5px}
     section{padding-block:76px}
+    .eq-grid{grid-template-columns:1fr 1fr;gap:12px}
+    .eq-body{padding:14px}
+    .eq h3{font-size:18px}
+    .eq p{font-size:14px}
+    .eq-ask{font-size:14px;gap:6px;white-space:nowrap}
+    .eq li{font-size:12.5px;padding:3px 9px}
+    .eq-step{font-size:11.5px;padding:3px 9px;top:10px;inset-inline-start:10px}
+    .lc-stats{grid-template-columns:1fr 1fr 1fr;gap:8px}
+    .lc-stats div{padding:10px}
+    .lc-stats b{font-size:22px}
+    .lc-stats span{font-size:12.5px}
     .brand b{font-size:22px}
     .brand img{width:44px;height:44px}
     .hero .ctas .btn{flex:1 1 100%}
@@ -589,7 +635,7 @@
       <nav class="sc-grid" aria-label="اختصارات">
         <a class="sc" href="#jinchan"><span class="ci g"><svg><use href="#i-bag"/></svg></span>جينشان<small>المواصفات</small></a>
         <a class="sc" href="#products"><span class="ci a"><svg><use href="#i-carbon"/></svg></span>الفحم النشط<small>الأنواع</small></a>
-        <a class="sc" href="#products"><span class="ci g"><svg><use href="#i-bars"/></svg></span>معدات التنقية<small>المتاح</small></a>
+        <a class="sc" href="#equipment"><span class="ci g"><svg><use href="#i-bars"/></svg></span>معدات التنقية<small>المتاح</small></a>
         <a class="sc" href="#story"><span class="ci a"><svg><use href="#i-book"/></svg></span>حكاية الدهب<small>خطوة بخطوة</small></a>
         <a class="sc" href="#faq"><span class="ci a"><svg><use href="#i-q"/></svg></span>الأسئلة<small>إجابات سريعة</small></a>
         <a class="sc" data-wa="السلام عليكم، عايز عرض سعر" href="#contact"><span class="ci w"><svg><use href="#i-wa"/></svg></span>عرض سعر<small>على واتساب</small></a>
@@ -605,6 +651,40 @@
         <p>اختار المنتج واسألنا على واتساب، وهنرد عليك بالسعر والكمية المتاحة.</p>
       </div>
       <div class="products" id="productGrid"></div>
+    </div>
+  </section>
+
+  <section class="equip-sec" id="equipment">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <span class="kick"><svg><use href="#i-bars"/></svg>المعدات</span>
+        <h2>معدات من الحجر للدهب</h2>
+        <p>كل مرحلة ليها ماكينتها: تكسير، طحن، فصل، وخلط. اسأل على أي ماكينة وهنقولك السعر والمقاسات المتاحة.</p>
+      </div>
+      <div class="eq-grid" id="eqGrid"></div>
+
+      <div class="line-card" data-reveal>
+        <div class="lc-text">
+          <span class="lc-kick">حل جاهز للمشروع</span>
+          <h3>خط إنتاج كامل في حاوية واحدة</h3>
+          <p>كل المعدات دي متجمّعة في خط واحد، مركّب على مقاس حاوية 40 قدم.</p>
+          <div class="lc-stats">
+            <div><b>28.5</b><span>طن الوزن الإجمالي</span></div>
+            <div><b>40</b><span>قدم مقاس الحاوية</span></div>
+            <div><b>4</b><span>مراحل: سحق، طحن، فصل، خلط</span></div>
+          </div>
+          <a class="btn btn-gold" data-wa="السلام عليكم، عايز أستفسر عن خط الاستخلاص المتكامل في حاوية" href="#"><svg><use href="#i-wa"/></svg>اطلب عرض سعر للخط</a>
+        </div>
+        <ol class="lc-list">
+          <li><b>3</b><span>كسارات فكية<small dir="ltr">200×300 · 250×400 · 300×500</small></span></li>
+          <li><b>3</b><span>مطحنة كرات<small dir="ltr">900×1800</small></span></li>
+          <li><b>1</b><span>جهاز طرد مركزي</span></li>
+          <li><b>2</b><span>طاولة فصل</span></li>
+          <li><b>1</b><span>خزان خلط<small>1300 بموتور 5.5 ك.وات</small></span></li>
+          <li><b>4.5</b><span>طن كرات طحن صلب</span></li>
+          <li><b>14</b><span>مخفض سرعة</span></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -659,7 +739,7 @@
             <span class="step-n">5</span>
             <h3>المعدات بتطلّع الدهب صافي</h3>
             <p>الدهب بيتفصل من الفحم ويتنقّى بالمعدات، لحد ما يبقى دهب صافي في إيدك.</p>
-            <a class="prod-tag" href="#products"><svg><use href="#i-bars"/></svg>معدات التنقية</a>
+            <a class="prod-tag" href="#equipment"><svg><use href="#i-bars"/></svg>معدات التنقية</a>
           </article>
         </div>
       </div>
@@ -876,7 +956,7 @@
         <ul>
           <li><a href="#jinchan">جينشان JIN CHAN</a></li>
           <li><a href="#products">الفحم النشط</a></li>
-          <li><a href="#products">معدات تنقية الذهب</a></li>
+          <li><a href="#equipment">معدات تنقية الذهب</a></li>
         </ul>
       </div>
       <div>
@@ -927,18 +1007,37 @@ const PRODUCTS = [
   },
   {
     name: "الفحم النشط", en: "ACTIVATED CARBON",
-    icon: "i-carbon",
-    desc: "فحم نشط لمرحلة امتصاص الذهب من المحلول.",
-    points: ["اسألنا عن الأنواع والعبوات"],
+    img: "img/carbon-bag.webp", fit: true,
+    desc: "فحم نشط حبيبي من قشر جوز الهند، بيمسك الدهب من المحلول في مرحلة الامتصاص.",
+    points: ["شيكارة 25 كجم", "حبيبات صلبة", "متوفر في المخزن"],
     msg: "السلام عليكم، عايز أستفسر عن الفحم النشط: الأنواع والسعر"
   },
   {
     name: "معدات تنقية الذهب", en: "REFINING EQUIPMENT",
-    img: "img/heap.webp",
-    desc: "معدات لمواقع ومشاريع استخلاص وتنقية الذهب.",
-    points: ["اسألنا عن المعدات المتاحة"],
-    msg: "السلام عليكم، عايز أستفسر عن معدات تنقية الذهب المتاحة"
+    img: "img/eq-ballmill.webp", fit: true,
+    desc: "من التكسير للطحن للفصل: كسارات، مطاحن، طرد مركزي، طاولات فصل وخزانات خلط.",
+    points: ["8 معدات", "خط استخلاص كامل"],
+    msg: "السلام عليكم، عايز أستفسر عن معدات تنقية الذهب المتاحة",
+    more: "#equipment", moreTxt: "شوف كل المعدات"
   }
+];
+const EQUIPMENT = [
+  { name: "كسارة فكية", en: "JAW CRUSHER", img: "img/eq-jaw-2.webp", step: "التكسير",
+    desc: "أول مرحلة: بتكسر الحجر الكبير لقطع صغيرة.", specs: ["200×300", "250×400", "300×500"] },
+  { name: "كسارة متنقلة", en: "MOBILE CRUSHER", img: "img/eq-mobile-crusher.webp", step: "التكسير",
+    desc: "كسارة على عجل بموتور ديزل وسير ناقل، تشتغل في الموقع من غير كهربا.", specs: ["موتور ديزل", "سير ناقل", "قادوس هزاز"] },
+  { name: "مطحنة كرات", en: "BALL MILL", img: "img/eq-ballmill.webp", step: "الطحن",
+    desc: "بتطحن الخام المكسّر لحد ما يبقى بودرة ناعمة، ومعاها قادوس تغذية.", specs: ["900×1800", "كرات طحن صلب"] },
+  { name: "طاحونة حجر", en: "WET PAN MILL", img: "img/eq-wetpan.webp", step: "الطحن",
+    desc: "طاحونة بعجلتين حجر، تطحن الخام مع الميّه وتجمّع الدهب الحر.", specs: ["طحن رطب", "عجلتين حجر"] },
+  { name: "جهاز طرد مركزي", en: "CENTRIFUGAL CONCENTRATOR", img: "img/eq-centrifuge.webp", step: "الفصل",
+    desc: "بيلف بسرعة ويفصل حبيبات الدهب التقيلة عن الرمل الخفيف.", specs: ["بموتور كهربا", "فصل بالجاذبية"] },
+  { name: "طاولة فصل", en: "SHAKING TABLE", img: "img/eq-table.webp", step: "الفصل",
+    desc: "طاولة هزازة مخططة، الدهب التقيل يمشي في ناحية والرمل في ناحية.", specs: ["سطح مخطط", "هزاز بموتور"] },
+  { name: "خزان خلط", en: "AGITATION TANK", img: "img/eq-tanks.webp", step: "الخلط",
+    desc: "بيقلّب الخام المطحون مع المحلول عشان الدهب يدوب كويس.", specs: ["قطر 1300", "موتور 5.5 ك.وات"] },
+  { name: "مخفض سرعة", en: "SPEED REDUCER", img: "img/eq-reducer.webp", step: "قطع غيار",
+    desc: "جيربوكس يظبط سرعة المطاحن والخزانات ويشيل الحمل التقيل.", specs: ["جسم حديد زهر", "لكل المقاسات"] }
 ];
 /* ============================== */
 
@@ -948,7 +1047,7 @@ const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
   <article class="prod${p.feature ? " feature" : ""}" data-reveal>
-    <div class="media${p.icon ? " ph" : ""}">
+    <div class="media${p.icon ? " ph" : ""}${p.fit ? " fit" : ""}">
       ${p.feature ? `<span class="ripple"></span><span class="ripple r2"></span>` : ""}
       ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : `<svg><use href="#${p.icon}"/></svg>`}
       ${p.sale && offerOn ? `<span class="badge sale">خصم 10%</span>` : p.badge ? `<span class="badge">${p.badge}</span>` : ""}
@@ -959,8 +1058,19 @@ document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
       <ul>${p.points.map(x => `<li>${x}</li>`).join("")}</ul>
       <div class="actions">
         <a class="btn ${p.feature ? "btn-gold" : "btn-wa"}" href="${wa(p.msg)}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>اسأل على واتساب</a>
-        ${p.more ? `<a class="more" href="${p.more}">شوف المواصفات</a>` : ""}
+        ${p.more ? `<a class="more" href="${p.more}">${p.moreTxt || "شوف المواصفات"}</a>` : ""}
       </div>
+    </div>
+  </article>`).join("");
+
+document.getElementById("eqGrid").innerHTML = EQUIPMENT.map(e => `
+  <article class="eq" data-reveal>
+    <div class="eq-media"><span class="eq-step">${e.step}</span><img src="${e.img}" alt="${e.name}" loading="lazy"></div>
+    <div class="eq-body">
+      <h3>${e.name}<span class="en">${e.en}</span></h3>
+      <p>${e.desc}</p>
+      <ul>${e.specs.map(x => `<li dir="auto">${x}</li>`).join("")}</ul>
+      <a class="eq-ask" href="${wa(`السلام عليكم، عايز أستفسر عن ${e.name} (${e.en}): السعر والمتاح`)}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>اسأل عن السعر</a>
     </div>
   </article>`).join("");
 
