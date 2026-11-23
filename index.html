@@ -304,6 +304,13 @@
   .sv-frame.on{opacity:1;transform:none}
   .sv-frame img{width:100%;height:100%;object-fit:cover}
   .sv-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,26,49,.75))}
+  .sv-frame.white{background:#fff}
+  .sv-frame.white img{object-fit:contain;padding:12% 8% 18%}
+  .sv-frame.white::after{background:linear-gradient(180deg,transparent 70%,rgba(10,26,49,.35))}
+  .ch .ch-img.white{background:#fff}
+  .ch .ch-img.white img{object-fit:contain;padding:6% 8%}
+  .story-note{display:flex;align-items:flex-start;gap:10px;justify-content:center;font-size:15.5px!important;color:#a9b8cc!important;max-width:62ch!important;margin:14px auto 22px!important;line-height:1.7!important;font-weight:500!important}
+  .story-note svg{width:20px;height:20px;flex:none;color:var(--gold-l);margin-top:3px}
   .sv-frame.carbon{background:radial-gradient(circle at 50% 40%,#1d5d99,#08345F 70%);display:grid;place-items:center}
   .sv-frame.carbon::after{display:none}
   .carbon-art{position:relative;width:62%;aspect-ratio:1}
@@ -822,12 +829,13 @@
         <div class="sv" aria-hidden="true">
           <div class="sv-box" id="svBox">
             <div class="sv-frame on"><img src="img/mine.webp" alt="" loading="lazy"></div>
-            <div class="sv-frame"><img src="img/heap.webp" alt="" loading="lazy"></div>
+            <div class="sv-frame white"><img src="img/eq-ballmill.webp" alt="" loading="lazy"></div>
+            <div class="sv-frame white"><img src="img/eq-table.webp" alt="" loading="lazy"></div>
             <div class="sv-frame"><img src="img/pit.webp" alt="" loading="lazy"></div>
             <div class="sv-frame carbon"><div class="carbon-art"></div><div class="cap-art">الفحم بيمسك ذرات الدهب</div></div>
             <div class="sv-frame"><img src="img/gold-bars.webp" alt="" loading="lazy"></div>
             <span class="sv-tag" id="svTag">الخام</span>
-            <div class="sv-dots" id="svDots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+            <div class="sv-dots" id="svDots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
         </div>
         <div class="chapters">
@@ -835,39 +843,47 @@
             <div class="ch-img"><img src="img/mine.webp" alt="خام فيه عروق دهب في موقع تعدين" loading="lazy"></div>
             <span class="step-n">1</span>
             <h3>الدهب مستخبي في الصخر</h3>
-            <p>في جبال الصحرا، الدهب مش بيبان بالعين. بيبقى ذرات صغيرة جدًا متفرقة جوه الخام، ومحتاجة طريقة عشان تطلع.</p>
+            <p>الدهب بيبقى ذرات صغيرة متفرقة جوه الصخر، وأغلبه مش بيبان بالعين. عشان كده أول خطوة إن عينة من الخام تتحلل في معمل، ونتأكد إن فيه دهب يستاهل الشغل.</p>
           </article>
-          <article class="ch" data-tag="التكويم">
-            <div class="ch-img"><img src="img/heap.webp" alt="أكوام ترشيح في موقع استخلاص" loading="lazy"></div>
+          <article class="ch" data-tag="التكسير والطحن">
+            <div class="ch-img white"><img src="img/eq-ballmill.webp" alt="مطحنة كرات لطحن الخام" loading="lazy"></div>
             <span class="step-n">2</span>
-            <h3>نكسّر الخام ونكوّمه</h3>
-            <p>الخام بيتكسر ويتكوّم في كومة كبيرة أو يتحط في خزان، عشان المحلول يقدر يوصل لكل حتة فيه.</p>
+            <h3>نكسّر الخام ونطحنه</h3>
+            <p>الكسارة بتكسّر الحجر لقطع صغيرة، والمطحنة بتطحنه لحد ما يبقى بودرة ناعمة زي الدقيق. كده ذرات الدهب اللي كانت محبوسة جوه الحجر بتتحرر.</p>
+            <a class="prod-tag" href="#equipment"><svg><use href="#i-bars"/></svg>الكسارات والمطاحن</a>
+          </article>
+          <article class="ch" data-tag="الفصل بالجاذبية">
+            <div class="ch-img white"><img src="img/eq-table.webp" alt="طاولة فصل هزازة" loading="lazy"></div>
+            <span class="step-n">3</span>
+            <h3>الدهب التقيل بيتفصل لوحده</h3>
+            <p>الدهب أتقل بكتير من الرمل. البودرة بتعدّي مع الميه على طاولة الهز وجهاز الطرد المركزي، فالدهب التقيل بيقعد تحت والرمل الخفيف بيمشي مع الميه.</p>
+            <a class="prod-tag" href="#equipment"><svg><use href="#i-bars"/></svg>طاولات الفصل والطرد المركزي</a>
           </article>
           <article class="ch" data-tag="جينشان">
             <div class="ch-img"><img src="img/pit.webp" alt="شيكارة جينشان في موقع تعدين" loading="lazy"></div>
-            <span class="step-n">3</span>
-            <h3>جينشان بيدوّب الدهب</h3>
-            <p>بيترش محلول جينشان على الكومة. المحلول بينزل بين الحجارة، ويدوّب ذرات الدهب ويشيلها معاه لتحت.</p>
+            <span class="step-n">4</span>
+            <h3>جينشان بيدوّب الدهب الناعم</h3>
+            <p>الدهب الناعم جدًا مش بيتمسك بالجاذبية. هنا بييجي دور محلول جينشان: بيترش على كومة الخام، أو بيتقلّب معاه في خزانات الخلط، فيدوّب ذرات الدهب ويشيلها معاه.</p>
             <a class="prod-tag" href="#jinchan"><svg viewBox="0 0 24 30"><use href="#i-dropc"/></svg>جينشان JIN CHAN</a>
           </article>
           <article class="ch" data-tag="الفحم النشط">
             <div class="ch-img"><div class="sv-frame carbon"><div class="carbon-art"></div></div></div>
-            <span class="step-n">4</span>
+            <span class="step-n">5</span>
             <h3>الفحم النشط بيمسك الدهب</h3>
-            <p>المحلول اللي فيه الدهب بيعدّي على الفحم النشط. الفحم بيمسك الدهب ويسيب الباقي يعدّي.</p>
+            <p>المحلول اللي فيه الدهب بيعدّي على الفحم النشط. الفحم بيمسك ذرات الدهب ويسيب الباقي يعدّي.</p>
             <a class="prod-tag" href="#products"><svg><use href="#i-carbon"/></svg>الفحم النشط</a>
           </article>
-          <article class="ch gold" data-tag="السبيكة">
+          <article class="ch gold" data-tag="الصهر والسبيكة">
             <div class="ch-img"><img src="img/gold-bars.webp" alt="سبايك دهب" loading="lazy"></div>
-            <span class="step-n">5</span>
-            <h3>المعدات بتطلّع الدهب صافي</h3>
-            <p>الدهب بيتفصل من الفحم ويتنقّى بالمعدات، لحد ما يبقى دهب صافي في إيدك.</p>
-            <a class="prod-tag" href="#equipment"><svg><use href="#i-bars"/></svg>معدات التنقية</a>
+            <span class="step-n">6</span>
+            <h3>الصهر: الدهب بيبقى سبيكة</h3>
+            <p>الدهب بيتفصل من الفحم، وبعدين بيتصهر في بوتقة على حرارة فوق 1064 درجة مع البوراكس. الشوائب بتطفو وتتشال، ويفضل الدهب الصافي سبيكة.</p>
           </article>
         </div>
       </div>
       <div class="story-end" data-reveal>
         <p>كل خطوة بتعتمد على اللي قبلها. ولو المادة مغشوشة، <b>الدهب يفضل في الصخر</b>.</p>
+        <p class="story-note"><svg><use href="#i-alert"/></svg>ابعد عن الزئبق: أبخرته سامة جدًا وممنوع في أغلب الدول. والتنقيب في مصر محتاج تراخيص رسمية من الجهات المختصة.</p>
         <a class="btn btn-gold" href="#trust"><svg><use href="#i-shield"/></svg>اعرف إزاي تشتري صح</a>
       </div>
     </div>
