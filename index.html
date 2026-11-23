@@ -19,7 +19,7 @@
     --navy:#10284A; --navy-2:#0C1F3A; --navy-3:#163563;
     --aqua:#0E66AE; --aqua-l:#3196DF; --aqua-d:#08345F;
     --gold:#C89B4E; --gold-l:#E6C878; --gold-d:#9C7230; --gold-ink:#7E5A1E;
-    --ivory:#F9FCF5; --mist:#EEF4F8;
+    --ivory:#F9FCF5; --mist:#EEF4F8; --cream:#FBF3DF;
     --ink:#10284A; --muted:#4E5D71;
     --line:rgba(230,200,120,.24);
     --wa:#167340;
@@ -27,10 +27,12 @@
     --aqua-grad:linear-gradient(170deg,#3196DF 0%,#0E66AE 45%,#08345F 100%);
     --ease:cubic-bezier(.22,.8,.2,1);
     --r:32px;
+    --hdr:78px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;font-family:"Tajawal",system-ui,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.75;font-size:17.5px;overflow-x:hidden}
+  body.menu-open{overflow:hidden}
   img{max-width:100%;display:block}
   a{color:inherit}
   :focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:12px}
@@ -40,40 +42,56 @@
   .shine{animation:shine 7s ease-in-out infinite}
   @keyframes shine{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
 
-  /* buttons */
-  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:800;text-decoration:none;font-size:17px;border:0;cursor:pointer;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s}
+  /* ---------- buttons ---------- */
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:800;text-decoration:none;font-size:17px;border:0;cursor:pointer;overflow:hidden;font-family:inherit;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s}
   .btn svg{width:22px;height:22px;flex:none}
   .btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(120%);transition:transform .8s var(--ease)}
   .btn:hover::after{transform:translateX(-120%)}
   .btn:hover{transform:translateY(-3px)}
   .btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.22)}
   .btn-gold{background:var(--gold-grad);color:var(--navy-2);box-shadow:0 10px 24px rgba(0,0,0,.22)}
+  .btn-navy{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(16,40,74,.25)}
   .btn-ghost{border:1.5px solid rgba(230,200,120,.6);color:var(--gold-l);background:rgba(255,255,255,.03)}
   .btn-ghost:hover{background:rgba(230,200,120,.1)}
+  .btn-line{border:1.5px solid var(--navy);color:var(--navy);background:transparent}
 
-  /* offer strip */
-  .offer-strip{background:var(--gold-grad);color:var(--navy-2);text-align:center;font-weight:700;padding:8px 16px;font-size:15px;position:relative;z-index:61}
-  .offer-strip a{font-weight:800}
-
-  /* header */
-  header{position:fixed;inset-inline:0;top:var(--strip-h,0px);z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .4s,top .3s,box-shadow .4s}
-  header.solid{background:rgba(12,31,58,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);top:0;box-shadow:0 8px 30px rgba(0,0,0,.18)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:78px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+  /* ---------- header ---------- */
+  header{position:fixed;inset-inline:0;top:0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s}
+  header.solid,.menu-open header{background:rgba(12,31,58,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(0,0,0,.18)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--hdr)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:none}
   .brand img{width:50px;height:50px}
   .brand b{font-weight:900;font-size:25px;line-height:1;display:block}
   .brand small{font-family:"Montserrat";font-weight:700;font-size:11.5px;color:var(--gold-l);letter-spacing:.18em;display:block;margin-top:4px}
-  .links{display:flex;gap:6px;background:rgba(255,255,255,.06);padding:6px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
-  .links a{color:#dfe6f0;text-decoration:none;font-weight:700;font-size:15.5px;padding:7px 16px;border-radius:999px;transition:background .3s,color .3s}
-  .links a:hover{background:rgba(230,200,120,.14);color:#fff}
+  .links{display:flex;gap:2px;background:rgba(255,255,255,.06);padding:6px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
+  .links a{color:#dfe6f0;text-decoration:none;font-weight:700;font-size:15.5px;padding:7px 15px;border-radius:999px;transition:background .3s,color .3s;white-space:nowrap}
+  .links a:hover,.links a.cur{background:rgba(230,200,120,.16);color:#fff}
+  .nav-end{display:flex;align-items:center;gap:10px}
+  .nav-tel{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-family:"Montserrat";font-weight:700;font-size:15px;direction:ltr;padding:8px 10px;border-radius:999px}
+  .nav-tel svg{width:18px;height:18px;color:var(--gold-l)}
+  .nav-tel:hover{background:rgba(255,255,255,.08)}
   .nav .btn{padding:11px 20px;font-size:15px}
+  .burger{display:none;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.1);cursor:pointer;place-items:center;padding:0}
+  .burger span{display:block;width:20px;height:2px;border-radius:2px;background:#fff;margin:4px auto;transition:transform .35s var(--ease),opacity .3s}
+  .menu-open .burger span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+  .menu-open .burger span:nth-child(2){opacity:0}
+  .menu-open .burger span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
 
-  /* hero */
+  /* mobile menu */
+  .sheet{position:fixed;inset:0;z-index:55;background:rgba(8,22,42,.97);backdrop-filter:blur(10px);padding:calc(var(--hdr) + 24px + env(safe-area-inset-top,0px)) 24px calc(30px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;opacity:0;visibility:hidden;overflow-y:auto;transition:opacity .4s var(--ease),visibility .4s}
+  .menu-open .sheet{opacity:1;visibility:visible}
+  .sheet a.it{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;padding:13px 18px;border-radius:22px;background:rgba(255,255,255,.05);transform:translateY(16px);opacity:0;transition:transform .5s var(--ease),opacity .5s,background .3s}
+  .sheet a.it svg{width:24px;height:24px;color:var(--gold-l);flex:none}
+  .sheet a.it:hover{background:rgba(255,255,255,.1)}
+  .menu-open .sheet a.it{transform:none;opacity:1}
+  .sheet .sheet-ctas{margin-top:auto;padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+  /* ---------- hero ---------- */
   .hero{position:relative;min-height:100svh;background:radial-gradient(800px 700px at 22% 40%,rgba(14,102,174,.35),transparent 65%),linear-gradient(180deg,#0C1F3A 0%,#10284A 100%);color:#fff;overflow:hidden;display:flex;align-items:center}
   #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:140px 150px}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:140px 190px}
   .hero-copy{position:relative;z-index:2}
-  .slogan{display:inline-flex;align-items:center;gap:10px;background:rgba(230,200,120,.1);border:1px solid var(--line);color:var(--gold-l);font-weight:800;font-size:15.5px;padding:7px 16px 7px 18px;border-radius:999px;margin-bottom:22px}
+  .slogan{display:inline-flex;align-items:center;gap:10px;background:rgba(230,200,120,.1);border:1px solid var(--line);color:var(--gold-l);font-weight:800;font-size:15.5px;padding:7px 18px;border-radius:999px;margin-bottom:22px}
   .slogan svg{width:16px;height:16px}
   .hero h1{font-weight:900;font-size:clamp(40px,5.3vw,76px);line-height:1.12;margin:0;letter-spacing:-.01em}
   .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap;padding-block:.04em .08em}
@@ -87,7 +105,6 @@
   .facts b{display:block;font-family:"Montserrat",sans-serif;font-size:24px;font-weight:700;color:#fff}
   .facts small{color:#a9b8cc;font-size:14px}
 
-  /* the drop: hero image framed in the logo's water drop */
   .drop-stage{position:relative;justify-self:center;width:min(100%,470px)}
   .drop{position:relative;aspect-ratio:1/1.22;clip-path:url(#dropClip);-webkit-clip-path:url(#dropClip)}
   .drop img{width:100%;height:100%;object-fit:cover;animation:kb 20s ease-in-out infinite alternate}
@@ -99,7 +116,6 @@
   .badge-logo{position:absolute;bottom:-6%;inset-inline-start:-8%;width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,#1b3d6f,#0C1F3A 70%);border:1px solid var(--line);box-shadow:0 24px 50px rgba(0,0,0,.45);display:grid;place-items:center;z-index:3}
   .badge-logo svg{width:78%;height:78%;overflow:visible}
 
-  /* logo icon animation */
   .ag .aq{transform-box:fill-box;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
   .ag .aq2{animation-duration:6s;animation-delay:-1s}
   .ag .aq3{animation-duration:4.4s;animation-delay:-2s}
@@ -108,15 +124,12 @@
   .ag .s2{animation-delay:-.8s}.ag .s3{animation-delay:-1.6s}.ag .s4{animation-delay:-2.3s}
   @keyframes twinkle{0%,100%{transform:scale(1) rotate(0);opacity:1}50%{transform:scale(.55) rotate(45deg);opacity:.6}}
 
-  /* waves */
   .wave{position:absolute;inset-inline:0;bottom:-1px;height:110px;pointer-events:none;z-index:2;overflow:hidden}
   .wave svg{position:absolute;bottom:0;width:200%;height:100%;left:0}
   .wave .w1{animation:drift 16s linear infinite;opacity:.35}
   .wave .w2{animation:drift 11s linear infinite reverse;opacity:.6}
-  .wave .w3{animation:none}
   @keyframes drift{to{transform:translateX(-50%)}}
 
-  /* hero load sequence */
   .js .hero h1 .ln>span{transform:translateY(110%)}
   .js .hero .slogan,.js .hero p.lead,.js .hero .ctas,.js .hero .facts{opacity:0;transform:translateY(24px)}
   .js .drop{transform:scale(.6);opacity:0}
@@ -129,46 +142,36 @@
   .loaded .drop{transform:none;opacity:1;transition:transform 1.4s var(--ease) .15s,opacity .8s .15s}
   .loaded .badge-logo{transform:none;transition:transform 1.1s cubic-bezier(.3,1.5,.5,1) 1s}
 
-  /* sections */
-  section{padding-block:110px;scroll-margin-top:78px;position:relative}
-  .head{text-align:center;margin:0 auto 56px;max-width:720px}
+  /* ---------- shortcuts ---------- */
+  .shortcuts{position:relative;z-index:5;margin-top:-80px}
+  .sc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;background:#fff;border-radius:36px;padding:14px;box-shadow:0 24px 60px rgba(16,40,74,.16)}
+  .sc{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 8px 16px;border-radius:24px;text-decoration:none;color:var(--navy);font-weight:800;font-size:15.5px;text-align:center;line-height:1.3;transition:background .3s,transform .35s var(--ease)}
+  .sc:hover{background:var(--mist);transform:translateY(-4px)}
+  .sc .ci{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;transition:transform .5s var(--ease)}
+  .sc:hover .ci{transform:scale(1.1) rotate(-6deg)}
+  .sc .ci svg{width:28px;height:28px}
+  .sc .ci.a{background:var(--mist);color:var(--aqua)}
+  .sc .ci.g{background:var(--cream);color:var(--gold-d)}
+  .sc .ci.w{background:#E5F3EA;color:var(--wa)}
+  .sc small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+
+  /* ---------- sections ---------- */
+  section{padding-block:110px;scroll-margin-top:var(--hdr);position:relative}
+  .head{text-align:center;margin:0 auto 56px;max-width:740px}
+  .kick{display:inline-flex;align-items:center;gap:8px;color:var(--aqua);font-weight:800;font-size:16px;margin-bottom:10px}
+  .kick svg{width:14px;height:18px}
   .head h2{font-size:clamp(32px,4.4vw,54px);line-height:1.2;margin:0 0 12px;font-weight:900}
-  .head p{color:var(--muted);margin:0 auto;max-width:52ch;font-size:18.5px}
-  .head .drop-ico{width:34px;height:42px;margin:0 auto 12px;display:block}
+  .head p{color:var(--muted);margin:0 auto;max-width:54ch;font-size:18.5px}
+  .dark .head p{color:#a9b8cc}
+  .dark .kick{color:var(--gold-l)}
 
   .js [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .js [data-reveal].in{opacity:1;transform:none}
 
-  /* meaning of the logo */
-  .meaning{background:var(--ivory);padding-top:70px}
-  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .m-card{position:relative;background:#fff;border-radius:var(--r);padding:34px 30px 30px;box-shadow:0 1px 0 rgba(16,40,74,.06),0 18px 40px rgba(16,40,74,.07);overflow:hidden}
-  .m-card .ico{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}
-  .m-card .ico svg{width:44px;height:44px}
-  .m-card.aqua .ico{background:var(--mist)}
-  .m-card.gold .ico{background:#FBF3DF}
-  .m-card h3{margin:0;font-size:26px;font-weight:900;line-height:1.3}
-  .m-card h3 .en{display:block;font-size:13px;letter-spacing:.16em;margin-top:2px;text-align:right}
-  .m-card.aqua h3 .en{color:var(--aqua)}
-  .m-card.gold h3 .en{color:var(--gold-ink)}
-  .m-card p{margin:10px 0 0;color:var(--muted)}
-  .m-card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;bottom:-120px;inset-inline-end:-80px;opacity:.08}
-  .m-card.aqua::after{background:var(--aqua)}
-  .m-card.gold::after{background:var(--gold)}
-  .m-sum{text-align:center;margin-top:36px;font-size:20px;font-weight:700}
-  .m-sum b{color:var(--aqua)} .m-sum i{font-style:normal;color:var(--gold-ink)}
-
-  /* marquee */
-  .marquee{background:var(--navy);color:#fff;overflow:hidden;white-space:nowrap;padding:18px 0;font-weight:700;font-size:19px}
-  .marquee .track{display:inline-flex;animation:mq 36s linear infinite}
-  .marquee span{display:inline-flex;align-items:center;gap:20px;padding-inline:20px}
-  .marquee span svg{width:14px;height:18px;flex:none}
-  @keyframes mq{to{transform:translateX(50%)}}
-
-  /* products */
-  .products-sec{background:var(--mist)}
+  /* ---------- products ---------- */
+  .products-sec{background:var(--ivory)}
   .products{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:24px}
-  .prod{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;display:flex;flex-direction:column;box-shadow:0 18px 40px rgba(16,40,74,.08);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+  .prod{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;display:flex;flex-direction:column;box-shadow:0 18px 40px rgba(16,40,74,.08);transition:box-shadow .5s var(--ease)}
   .prod:hover{box-shadow:0 30px 60px rgba(16,40,74,.14)}
   .prod.feature{grid-row:span 2;background:radial-gradient(500px 420px at 50% 35%,#1d4a85,var(--navy-2) 75%);color:#fff}
   .prod .media{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--mist);margin:12px 12px 0;border-radius:calc(var(--r) - 10px)}
@@ -178,8 +181,8 @@
   .prod.feature .media img{width:auto;max-height:420px;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));animation:float 6s ease-in-out infinite;position:relative}
   @keyframes float{50%{transform:translateY(-14px) rotate(-1.5deg)}}
   .prod.feature:hover .media img{transform:none}
-  .prod .ripple{position:absolute;left:50%;top:58%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;border:1.5px solid rgba(49,150,223,.5);animation:ripple 4s ease-out infinite;pointer-events:none}
-  .prod .ripple.r2{animation-delay:-2s}
+  .ripple{position:absolute;left:50%;top:58%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;border:1.5px solid rgba(49,150,223,.5);animation:ripple 4s ease-out infinite;pointer-events:none}
+  .ripple.r2{animation-delay:-2s}
   @keyframes ripple{from{transform:scale(.4);opacity:1}to{transform:scale(1.5);opacity:0}}
   .prod .media.ph{background:var(--aqua-grad);display:grid;place-items:center}
   .prod .media.ph svg{width:120px;height:120px;color:#fff;opacity:.95;animation:float 7s ease-in-out infinite}
@@ -200,34 +203,77 @@
   .prod .actions .btn{padding:12px 22px;font-size:15.5px}
   .prod .more{color:var(--gold-l);font-weight:800;text-decoration:none;align-self:center;padding:10px}
 
-  /* journey */
-  .journey{background:var(--navy-2);color:#fff;overflow:hidden}
-  .journey .head p{color:#a9b8cc}
-  .flow{position:relative}
-  .flow svg.river{position:absolute;inset-inline:0;top:6px;width:100%;height:90px;overflow:visible}
-  .river .base{fill:none;stroke:rgba(49,150,223,.22);stroke-width:3;stroke-linecap:round}
-  .river .fill{fill:none;stroke:url(#riverGrad);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p,0))}
-  .steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-  .step{position:relative;text-align:center}
-  .step .dot{width:96px;height:96px;margin:0 auto 22px;border-radius:50%;background:#0f2a4e;display:grid;place-items:center;position:relative;z-index:1;box-shadow:inset 0 0 0 1.5px rgba(49,150,223,.35);transition:background .7s var(--ease),transform .7s var(--ease),box-shadow .7s}
-  .step .dot svg{width:44px;height:44px;color:var(--aqua-l);transition:color .6s}
-  .step.on .dot{transform:scale(1.06);box-shadow:inset 0 0 0 0 transparent}
-  .step.on.w .dot{background:var(--aqua-grad)}
-  .step.on.g .dot{background:var(--gold-grad)}
-  .step.on .dot svg{color:#fff}
-  .step.on.g .dot svg{color:var(--navy-2)}
-  .step h3{margin:0 0 6px;font-size:24px;font-weight:900}
-  .step p{margin:0 auto;color:#a9b8cc;font-size:16px;max-width:26ch}
-  .step .use{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:800;color:var(--gold-l);background:rgba(230,200,120,.1);border-radius:999px;padding:4px 14px}
+  /* ---------- story ---------- */
+  .story{background:var(--navy-2);color:#fff}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .sv{position:sticky;top:calc(var(--hdr) + 30px);height:calc(100vh - var(--hdr) - 60px);max-height:640px;min-height:440px}
+  .sv-box{position:relative;height:100%;border-radius:46% 46% 40px 40px / 30% 30% 40px 40px;overflow:hidden;background:#0a1a31;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+  .sv-frame{position:absolute;inset:0;opacity:0;transform:scale(1.08);transition:opacity .9s var(--ease),transform 1.4s var(--ease)}
+  .sv-frame.on{opacity:1;transform:none}
+  .sv-frame img{width:100%;height:100%;object-fit:cover}
+  .sv-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,26,49,.75))}
+  .sv-frame.carbon{background:radial-gradient(circle at 50% 40%,#1d5d99,#08345F 70%);display:grid;place-items:center}
+  .sv-frame.carbon::after{display:none}
+  .carbon-art{position:relative;width:62%;aspect-ratio:1}
+  .carbon-art .gr{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a4f58,#16181c 70%);box-shadow:inset -6px -8px 14px rgba(0,0,0,.5)}
+  .carbon-art .au{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--gold-grad);animation:catch 4s var(--ease) infinite}
+  @keyframes catch{0%{transform:translate(var(--fx),var(--fy)) scale(.4);opacity:0}25%{opacity:1}70%,100%{transform:translate(0,0) scale(1);opacity:1}}
+  .sv-frame.carbon .cap-art{position:absolute;bottom:60px;inset-inline:0;text-align:center;font-weight:800;color:#cfe3f5;z-index:2}
+  .sv-tag{position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(12,31,58,.75);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--gold-l);font-weight:800;border-radius:999px;padding:6px 18px;font-size:15px;white-space:nowrap}
+  .sv-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+  .sv-dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);transition:width .4s var(--ease),background .4s}
+  .sv-dots i.on{width:28px;border-radius:9px;background:var(--gold-l)}
+  .ch{min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding-block:30px;opacity:.28;transition:opacity .6s var(--ease)}
+  .ch.on{opacity:1}
+  .ch .step-n{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(49,150,223,.15);color:var(--aqua-l);font-family:"Montserrat";font-weight:700;font-size:18px;margin-bottom:18px;transition:background .5s,color .5s}
+  .ch.on .step-n{background:var(--aqua-grad);color:#fff}
+  .ch.gold.on .step-n{background:var(--gold-grad);color:var(--navy-2)}
+  .ch h3{font-size:clamp(28px,3.2vw,40px);line-height:1.25;margin:0 0 12px;font-weight:900}
+  .ch p{color:#b9c6d8;font-size:19px;margin:0;max-width:40ch}
+  .ch .prod-tag{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:rgba(230,200,120,.12);color:var(--gold-l);font-weight:800;border-radius:999px;padding:7px 16px;font-size:15px;align-self:flex-start;text-decoration:none;transition:background .3s}
+  .ch .prod-tag:hover{background:rgba(230,200,120,.22)}
+  .ch .prod-tag svg{width:16px;height:16px}
+  .ch .ch-img{display:none}
+  .story-end{margin-top:40px;text-align:center}
+  .story-end p{font-size:clamp(22px,2.6vw,30px);font-weight:800;margin:0 auto;max-width:30ch;line-height:1.5}
+  .story-end p b{color:var(--gold-l)}
+  .story-end .btn{margin-top:22px}
 
-  /* specs */
+  /* ---------- trust ---------- */
+  .trust{background:var(--ivory)}
+  .trust-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+  .trust-img{position:relative}
+  .trust-img .ph{border-radius:46% 46% 40px 40px / 32% 32% 40px 40px;aspect-ratio:4/4.8;box-shadow:0 30px 60px rgba(16,40,74,.18)}
+  .trust-img .ph img{width:100%;height:100%;object-fit:cover}
+  .trust-img .bagcheck{position:relative;background:radial-gradient(circle at 50% 40%,#1d4a85,var(--navy-2) 72%);display:grid;place-items:center;overflow:visible}
+  .trust-img .bagcheck img{position:absolute;top:13%;left:0;right:0;margin-inline:auto;width:auto;height:74%;max-width:78%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.5));border-radius:0}
+  .call{position:absolute;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--navy);font-family:"Montserrat";font-weight:700;font-size:14px;padding:7px 14px 7px 12px;border-radius:999px;box-shadow:0 12px 26px rgba(0,0,0,.25);direction:ltr;animation:bob 5s ease-in-out infinite}
+  .call svg{width:16px;height:16px;color:var(--wa)}
+  .call.c1{top:22%;left:-4%}.call.c2{top:42%;right:-5%;animation-delay:-1.2s}.call.c3{top:64%;left:-6%;animation-delay:-2.4s}.call.c4{top:80%;right:2%;animation-delay:-3.6s}
+  @keyframes bob{50%{transform:translateY(-8px)}}
+  .trust-img .seal{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff;border-radius:28px;padding:14px 20px;box-shadow:0 18px 40px rgba(16,40,74,.15);display:flex;align-items:center;gap:12px;font-weight:800}
+  .trust-img .seal svg{width:34px;height:34px;color:var(--wa);flex:none}
+  .trust-img .seal small{display:block;font-weight:500;color:var(--muted);font-size:13.5px}
+  .trust h2{font-size:clamp(32px,4.2vw,52px);line-height:1.2;margin:0 0 14px;font-weight:900}
+  .trust .intro{color:var(--muted);font-size:18.5px;margin:0 0 26px;max-width:50ch}
+  .checks{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:12px}
+  .checks li{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:24px;padding:16px 20px;box-shadow:0 10px 26px rgba(16,40,74,.06)}
+  .checks .ok{flex:none;width:34px;height:34px;border-radius:50%;background:#E5F3EA;color:var(--wa);display:grid;place-items:center}
+  .checks .ok svg{width:18px;height:18px}
+  .checks b{display:block;font-size:18px}
+  .checks span{color:var(--muted);font-size:16px}
+  .warn{display:flex;gap:12px;align-items:flex-start;background:#FDEDEC;color:#8E1F18;border-radius:24px;padding:16px 20px;margin-bottom:28px;font-weight:700}
+  .warn svg{width:24px;height:24px;flex:none;margin-top:2px}
+
+  /* ---------- specs ---------- */
+  .specs-sec{background:var(--mist)}
   .spec-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
   .bag-stage{position:relative;text-align:center}
   .bag-stage .pool{position:relative;border-radius:48% 48% 40px 40px / 38% 38% 40px 40px;background:radial-gradient(circle at 50% 35%,#1d4a85,var(--navy-2) 72%);padding:60px 30px 44px;overflow:hidden}
   .bag-stage .pool::before{content:"";position:absolute;inset-inline:-20%;bottom:-40px;height:130px;background:radial-gradient(ellipse at center,rgba(49,150,223,.35),transparent 70%)}
   .bag-stage img{max-height:440px;margin-inline:auto;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(0,0,0,.5));position:relative;transition:transform .6s var(--ease),opacity .3s}
   .bag-stage img.flip{transform:rotateY(90deg) scale(.9);opacity:0}
-  .toggle{display:inline-flex;background:var(--mist);border-radius:999px;padding:5px;margin-top:22px;position:relative}
+  .toggle{display:inline-flex;background:#fff;border-radius:999px;padding:5px;margin-top:22px;position:relative}
   .toggle button{font:inherit;font-weight:800;background:transparent;color:var(--navy);border:0;padding:9px 26px;border-radius:999px;cursor:pointer;position:relative;z-index:1;transition:color .3s}
   .toggle .pill{position:absolute;top:5px;bottom:5px;border-radius:999px;background:var(--navy);transition:all .45s var(--ease)}
   .toggle button[aria-pressed="true"]{color:var(--gold-l)}
@@ -237,13 +283,12 @@
   .spec-list{margin:0;padding:8px;list-style:none;background:#fff;border-radius:var(--r);box-shadow:0 18px 40px rgba(16,40,74,.07)}
   .spec-list li{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:14px 20px;border-radius:20px;transition:background .3s}
   .spec-list li:nth-child(odd){background:#F6F8F4}
-  .spec-list li:hover{background:#FBF3DF}
+  .spec-list li:hover{background:var(--cream)}
   .spec-list b{color:var(--gold-ink);font-weight:800}
   .spec-ctas{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-  .spec-ctas .btn-ghost{color:var(--navy);border-color:var(--navy)}
 
-  /* offer */
-  .offer{background:var(--ivory);padding-top:0}
+  /* ---------- offer ---------- */
+  .offer{background:var(--mist);padding-top:0}
   .offer-box{display:grid;grid-template-columns:1.1fr .9fr;align-items:stretch;background:var(--navy-2);color:#fff;border-radius:44px;overflow:hidden;position:relative}
   .offer-box::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(14,102,174,.4),transparent 65%);top:-220px;right:-180px}
   .offer-text{padding:56px;position:relative}
@@ -258,8 +303,46 @@
   .offer-box .pic{position:relative;overflow:hidden;margin:14px;border-radius:34px}
   .offer-box .pic img{width:100%;height:100%;object-fit:cover}
 
-  /* gallery */
-  .gallery-sec{background:var(--ivory)}
+  /* ---------- about ---------- */
+  .about{background:var(--ivory)}
+  .about-top{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;margin-bottom:70px}
+  .about h2{font-size:clamp(34px,4.6vw,58px);line-height:1.15;margin:0 0 18px;font-weight:900}
+  .about .txt p{color:var(--muted);font-size:19px;margin:0 0 16px;max-width:52ch}
+  .about .txt p strong{color:var(--ink)}
+  .about .sign{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .about .sign span{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:9px 18px;font-weight:700;box-shadow:0 8px 20px rgba(16,40,74,.06)}
+  .about .sign svg{width:18px;height:18px;color:var(--aqua)}
+  .logo-card{position:relative;background:#fff;border-radius:48% 48% 44px 44px / 34% 34% 44px 44px;padding:70px 40px 50px;box-shadow:0 30px 70px rgba(16,40,74,.1);text-align:center;overflow:hidden}
+  .logo-card::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(14,102,174,.08),transparent 70%);top:-120px;left:50%;transform:translateX(-50%)}
+  .logo-card img{position:relative;width:min(100%,330px);margin-inline:auto}
+  .values{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:80px}
+  .val{background:#fff;border-radius:28px;padding:28px 24px;box-shadow:0 14px 34px rgba(16,40,74,.06);transition:transform .45s var(--ease),box-shadow .45s}
+  .val:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(16,40,74,.1)}
+  .val .vi{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
+  .val .vi svg{width:28px;height:28px}
+  .val .vi.a{background:var(--mist);color:var(--aqua)}
+  .val .vi.g{background:var(--cream);color:var(--gold-d)}
+  .val h3{margin:0 0 6px;font-size:21px;font-weight:900}
+  .val p{margin:0;color:var(--muted);font-size:16px}
+  .meaning-title{text-align:center;font-size:clamp(26px,3vw,36px);font-weight:900;margin:0 0 8px}
+  .meaning-sub{text-align:center;color:var(--muted);margin:0 0 34px}
+  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .m-card{position:relative;background:#fff;border-radius:var(--r);padding:30px 28px 28px;box-shadow:0 14px 34px rgba(16,40,74,.06);overflow:hidden}
+  .m-card .ico{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
+  .m-card .ico svg{width:40px;height:40px}
+  .m-card.aqua .ico{background:var(--mist)}
+  .m-card.gold .ico{background:var(--cream)}
+  .m-card h3{margin:0;font-size:24px;font-weight:900;line-height:1.3}
+  .m-card h3 .en{display:block;font-size:13px;letter-spacing:.16em;margin-top:2px;text-align:right}
+  .m-card.aqua h3 .en{color:var(--aqua)}
+  .m-card.gold h3 .en{color:var(--gold-ink)}
+  .m-card p{margin:10px 0 0;color:var(--muted)}
+  .m-card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;bottom:-120px;inset-inline-end:-80px;opacity:.08}
+  .m-card.aqua::after{background:var(--aqua)}
+  .m-card.gold::after{background:var(--gold)}
+
+  /* ---------- gallery ---------- */
+  .gallery-sec{background:var(--mist)}
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start}
   .gallery figure{margin:0}
   .gallery figure:nth-child(even){margin-top:64px}
@@ -268,47 +351,105 @@
   .gallery figcaption{font-weight:900;font-size:21px;margin-top:14px;text-align:center}
   .gallery figcaption small{display:block;font-weight:500;color:var(--muted);font-size:15px}
 
-  /* contact */
+  /* ---------- order + faq ---------- */
+  .faq-sec{background:var(--ivory)}
+  .order{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:90px}
+  .o-step{background:#fff;border-radius:var(--r);padding:30px 28px;box-shadow:0 14px 34px rgba(16,40,74,.06);text-align:center}
+  .o-step .n{width:60px;height:60px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;font-family:"Montserrat";font-weight:700;font-size:22px;color:#fff;background:var(--aqua-grad)}
+  .o-step:last-child .n{background:var(--gold-grad);color:var(--navy-2)}
+  .o-step h3{margin:0 0 6px;font-size:22px;font-weight:900}
+  .o-step p{margin:0;color:var(--muted)}
+  .faq{max-width:860px;margin-inline:auto;display:grid;gap:12px}
+  .faq details{background:#fff;border-radius:26px;box-shadow:0 10px 26px rgba(16,40,74,.06);overflow:hidden;transition:box-shadow .3s}
+  .faq details[open]{box-shadow:0 18px 40px rgba(16,40,74,.1)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;font-weight:800;font-size:19px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:none;width:36px;height:36px;border-radius:50%;background:var(--mist);position:relative;transition:background .3s,transform .4s var(--ease)}
+  .faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;border-radius:2px;background:var(--aqua);transform:translate(-50%,-50%)}
+  .faq summary .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s var(--ease)}
+  .faq details[open] .pm{background:var(--aqua);transform:rotate(180deg)}
+  .faq details[open] .pm::before{background:#fff}
+  .faq details[open] .pm::after{transform:translate(-50%,-50%) rotate(0);background:#fff}
+  .faq .ans{padding:0 26px 22px;color:var(--muted);font-size:17px;animation:ansIn .5s var(--ease)}
+  @keyframes ansIn{from{opacity:0;transform:translateY(-8px)}}
+  .faq .ans p{margin:0}
+  .faq .ans a{color:var(--aqua);font-weight:700}
+
+  /* ---------- contact ---------- */
   .contact{background:linear-gradient(180deg,#10284A,#0C1F3A);color:#fff;text-align:center;overflow:hidden;padding-top:150px}
   .contact .wave{top:-1px;bottom:auto;transform:scaleY(-1)}
   .contact h2{font-size:clamp(40px,6vw,80px);line-height:1.15;margin:0 0 16px;font-weight:900}
   .contact .lead{color:#b4c2d5;font-size:19px;margin:0 auto 34px;max-width:46ch}
   .big-num{display:inline-block;font-family:"Montserrat";font-weight:700;font-size:clamp(34px,6vw,70px);letter-spacing:.03em;direction:ltr;text-decoration:none;margin-bottom:34px}
   .contact .ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-  .contact .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:50px}
-  .contact .meta span,.contact .meta a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:rgba(255,255,255,.06);border-radius:999px;padding:10px 20px;color:#cdd7e6}
-  .contact .meta svg{width:20px;height:20px;color:var(--gold-l)}
-  .contact .meta a:hover{background:rgba(255,255,255,.12);color:#fff}
 
-  footer{background:#08172C;color:#8193ac;text-align:center;padding:26px 16px calc(26px + env(safe-area-inset-bottom,0px));font-size:14.5px}
-  footer b{color:var(--gold-l)}
+  footer{background:#08172C;color:#9aabc2;padding:64px 0 calc(26px + env(safe-area-inset-bottom,0px));font-size:15.5px}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  .f-brand img{width:64px;height:64px;margin-bottom:12px}
+  .f-brand b{display:block;color:#fff;font-size:24px;font-weight:900}
+  .f-brand p{margin:8px 0 0;max-width:32ch}
+  footer h4{color:#fff;font-size:17px;margin:4px 0 14px;font-weight:800}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  footer ul a,footer ul span{color:#9aabc2;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+  footer ul a:hover{color:var(--gold-l)}
+  footer ul svg{width:17px;height:17px;color:var(--gold-l)}
+  .f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;text-align:center;font-size:14.5px}
+  .f-bottom b{color:var(--gold-l)}
 
-  .fab{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));inset-inline-start:22px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .3s var(--ease)}
+  .fab{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));inset-inline-start:22px;z-index:50;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .3s var(--ease)}
   .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ring 2.2s var(--ease) infinite}
   @keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
   .fab:hover{transform:scale(1.08)}
   .fab svg{width:32px;height:32px;color:#fff}
+  .totop{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));inset-inline-end:22px;z-index:50;width:50px;height:50px;border-radius:50%;border:0;background:#fff;color:var(--navy);box-shadow:0 10px 26px rgba(16,40,74,.2);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .4s,transform .4s var(--ease)}
+  .totop.show{opacity:1;transform:none;pointer-events:auto}
+  .totop svg{width:22px;height:22px}
 
+  /* mobile bottom bar */
+  .mbar{display:none;position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:rgba(12,31,58,.94);backdrop-filter:blur(12px);border-radius:999px;padding:7px;grid-template-columns:1fr 1.3fr 1fr;gap:6px;box-shadow:0 14px 34px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .5s var(--ease)}
+  .mbar.show{transform:none}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:11px 6px;border-radius:999px}
+  .mbar a svg{width:19px;height:19px}
+  .mbar a.wa{background:var(--wa)}
+
+  @media (max-width:1180px){
+    .nav-tel{display:none}
+    .links a{padding:7px 11px;font-size:15px}
+  }
   @media (max-width:980px){
-    .links{display:none}
-    .hero .wrap,.spec-wrap,.offer-box{grid-template-columns:1fr}
-    .hero .wrap{padding-block:120px 140px;gap:60px}
+    :root{--hdr:68px}
+    .links,.nav .btn{display:none}
+    .burger{display:grid}
+    .hero .wrap,.spec-wrap,.offer-box,.trust-box,.about-top{grid-template-columns:1fr}
+    .hero .wrap{padding-block:110px 170px;gap:60px}
     .drop-stage{width:min(80%,400px)}
+    .sc-grid{grid-template-columns:repeat(3,1fr)}
     .products{grid-template-columns:1fr}
     .prod.feature{grid-row:auto}
-    .m-grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr 1fr;row-gap:50px}
-    .flow svg.river{display:none}
+    .story-grid{grid-template-columns:1fr;gap:0}
+    .sv{display:none}
+    .ch{min-height:0;opacity:1;padding-block:0 56px}
+    .ch .ch-img{display:block;border-radius:40% 40% 30px 30px / 26% 26% 30px 30px;overflow:hidden;aspect-ratio:4/3.6;margin-bottom:22px;position:relative}
+    .ch .ch-img img{width:100%;height:100%;object-fit:cover}
+    .ch .ch-img .sv-frame{opacity:1;transform:none}
+    .ch .step-n{background:var(--aqua-grad);color:#fff}
+    .ch.gold .step-n{background:var(--gold-grad);color:var(--navy-2)}
+    .story-end{margin-top:0}
+    .trust-img{max-width:440px;margin-inline:auto;width:100%}
+    .values{grid-template-columns:1fr 1fr}
+    .m-grid,.order{grid-template-columns:1fr}
+    .logo-card{max-width:440px;margin-inline:auto;width:100%}
     .gallery{grid-template-columns:1fr 1fr}
     .offer-box .pic{max-height:460px}
     .spec-wrap{gap:50px}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .fab,.totop{display:none}
+    .mbar{display:grid}
+    footer{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
   }
   @media (max-width:620px){
     body{font-size:16.5px}
     section{padding-block:76px}
-    .nav{height:68px}
-    .nav .btn span{display:none}
-    .nav .btn{padding:11px}
     .brand b{font-size:22px}
     .brand img{width:44px;height:44px}
     .hero .ctas .btn{flex:1 1 100%}
@@ -316,15 +457,25 @@
     .facts b{font-size:20px}
     .drop-stage{width:84%}
     .wave{height:70px}
-    .steps{grid-template-columns:1fr}
+    .shortcuts{margin-top:-60px}
+    .sc-grid{gap:4px;padding:10px;border-radius:30px}
+    .sc{padding:14px 4px 12px;font-size:14px}
+    .sc .ci{width:50px;height:50px}
+    .sc small{display:none}
     .spec-list li{grid-template-columns:1fr;gap:0}
     .offer-box{border-radius:32px}
     .offer-text{padding:36px 24px}
     .countdown div{width:72px}
+    .values{grid-template-columns:1fr}
+    .call{font-size:12.5px;padding:6px 11px}
+    .call.c1,.call.c3{left:0}.call.c2{right:0}
     .gallery{gap:14px}
     .gallery figure:nth-child(even){margin-top:40px}
     .gallery figcaption{font-size:18px}
     .contact{padding-top:110px}
+    .f-grid{grid-template-columns:1fr}
+    .faq summary{font-size:17px;padding:18px 20px}
+    .faq .ans{padding:0 20px 20px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -339,41 +490,64 @@
   <defs>
     <clipPath id="dropClip" clipPathUnits="objectBoundingBox"><path d="M.5 0C.56 .1 1 .42 1 .66C1 .87 .78 1 .5 1C.22 1 0 .87 0 .66C0 .42 .44 .1 .5 0Z"/></clipPath>
     <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBEDB9"/><stop offset=".5" stop-color="#C89B4E"/><stop offset="1" stop-color="#3196DF"/></linearGradient>
-    <linearGradient id="riverGrad" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#3196DF"/><stop offset=".55" stop-color="#3196DF"/><stop offset="1" stop-color="#E6C878"/></linearGradient>
     <linearGradient id="dropFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3196DF"/><stop offset="1" stop-color="#0E66AE"/></linearGradient>
   </defs>
   <symbol id="i-drop" viewBox="0 0 24 30"><path fill="url(#dropFill)" d="M12 0C13.4 3 24 12.6 24 19.8C24 26.1 18.7 30 12 30C5.3 30 0 26.1 0 19.8C0 12.6 10.6 3 12 0Z"/></symbol>
+  <symbol id="i-dropc" viewBox="0 0 24 30"><path fill="currentColor" d="M12 0C13.4 3 24 12.6 24 19.8C24 26.1 18.7 30 12 30C5.3 30 0 26.1 0 19.8C0 12.6 10.6 3 12 0Z"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C12.9 7.2 16.8 11.1 24 12C16.8 12.9 12.9 16.8 12 24C11.1 16.8 7.2 12.9 0 12C7.2 11.1 11.1 7.2 12 0Z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.08c-.24.68-1.42 1.3-1.95 1.35-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.3.37-.43.5-.14.14-.29.3-.12.59.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.41.29.14.45.12.62-.07.17-.19.71-.83.9-1.12.19-.29.38-.24.64-.14.26.09 1.67.79 1.96.93.29.14.48.21.55.33.07.12.07.69-.17 1.37z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
   <symbol id="i-carbon" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="8" cy="9" r="4.2"/><circle cx="16.2" cy="8" r="3.2" opacity=".75"/><circle cx="14.5" cy="15.8" r="4.6"/><circle cx="6.8" cy="17.2" r="2.6" opacity=".7"/></g></symbol>
-  <symbol id="i-rock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="7" cy="17" rx="5" ry="3.6"/><ellipse cx="16.5" cy="17.4" rx="5" ry="3.2"/><ellipse cx="11.5" cy="10.5" rx="4.6" ry="3.6"/></g></symbol>
   <symbol id="i-bars" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="13" width="9" height="6" rx="2"/><rect x="12.5" y="13" width="9" height="6" rx="2"/><rect x="7.5" y="6" width="9" height="6" rx="2"/></g></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5c1.5 1 8.5 1 10 0"/><path d="M7 4.5C4.5 8 4.3 16 6 20c.4 1 1.4 1.5 2.4 1.5h7.2c1 0 2-.5 2.4-1.5 1.7-4 1.5-12-1-15.5"/><path d="M9.5 13h5"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.1 5.1 3 6.5 3H20v15H6.5C5.1 18 4 19.1 4 20.5z"/><path d="M4 20.5C4 21.9 5.1 23 6.5 23H20v-5"/></g></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.3-2.7 4"/><circle cx="12" cy="17.6" r=".6" fill="currentColor"/></g></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20.5c.6-3.6 3.3-5.6 6.5-5.6s5.9 2 6.5 5.6"/><circle cx="17" cy="9" r="2.6"/><path d="M17.5 14.6c2.3.3 3.8 1.9 4.2 4.4"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5.5c0-.6-.4-1.1-1-1.3l-6.4-2a2 2 0 0 0-1.2 0l-6.4 2c-.6.2-1 .7-1 1.3V12c0 6.4 8 10 8 10z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></g></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v6"/><circle cx="12" cy="16.8" r=".7" fill="currentColor"/></g></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 5.5C4 4.1 5.1 3 6.5 3h11C18.9 3 20 4.1 20 5.5v8c0 1.4-1.1 2.5-2.5 2.5H10l-4.5 4v-4c-.8 0-1.5-.7-1.5-1.5z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 12.2V5a2 2 0 0 1 2-2h7.2c.5 0 1 .2 1.4.6l7.8 7.8a2 2 0 0 1 0 2.8l-7.2 7.2a2 2 0 0 1-2.8 0l-7.8-7.8c-.4-.4-.6-.9-.6-1.4z"/><circle cx="8" cy="8" r="1.6"/></g></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M6 11l6-6 6 6"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2.1A21 21 0 0 0 14.6 2C12.2 2 10.6 3.4 10.6 6v2H8v3.2h2.6V22H14V11.2h2.6L17 8z"/></symbol>
   <symbol id="wavePath" viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 60C120 30 240 30 360 60S600 90 720 60 960 30 1080 60 1320 90 1440 60V110H0Z"/></symbol>
 </svg>
 
-<div class="offer-strip" id="offerStrip" hidden>
-  عرض لفترة محدودة: خصم <b>10%</b> على جينشان JIN CHAN لحد 30 نوفمبر. <a href="#offer">التفاصيل</a>
-</div>
-
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="أكوا جولد">
+    <a class="brand" href="#top" aria-label="أكوا جولد، الرئيسية">
       <img src="img/icon.png" alt="" width="50" height="50">
       <span><b>أكوا جولد</b><small>AQUA GOLD</small></span>
     </a>
     <nav class="links" aria-label="أقسام الموقع">
       <a href="#products">المنتجات</a>
-      <a href="#journey">رحلة الذهب</a>
-      <a href="#jinchan">المواصفات</a>
-      <a href="#offer" data-offer-link>العرض</a>
+      <a href="#story">حكاية الدهب</a>
+      <a href="#trust">الأصلي</a>
+      <a href="#about">من نحن</a>
+      <a href="#faq">الأسئلة</a>
       <a href="#contact">تواصل معانا</a>
     </nav>
-    <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg><span>واتساب</span></a>
+    <div class="nav-end">
+      <a class="nav-tel" data-tel href="#contact"><svg><use href="#i-phone"/></svg>01286665262</a>
+      <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg><span>واتساب</span></a>
+      <button class="burger" id="burger" type="button" aria-label="القايمة" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
+
+<nav class="sheet" id="sheet" aria-label="القايمة">
+  <a class="it" href="#products"><svg><use href="#i-bag"/></svg>المنتجات</a>
+  <a class="it" href="#story"><svg><use href="#i-book"/></svg>حكاية الدهب</a>
+  <a class="it" href="#trust"><svg><use href="#i-shield"/></svg>إزاي تتأكد إنه أصلي</a>
+  <a class="it" href="#jinchan"><svg><use href="#i-tag"/></svg>مواصفات جينشان</a>
+  <a class="it" href="#about"><svg><use href="#i-users"/></svg>من نحن</a>
+  <a class="it" href="#faq"><svg><use href="#i-q"/></svg>الأسئلة الشائعة</a>
+  <div class="sheet-ctas">
+    <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg>واتساب</a>
+    <a class="btn btn-ghost" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصال</a>
+  </div>
+</nav>
 
 <main id="top">
   <section class="hero" style="padding:0">
@@ -389,7 +563,7 @@
         <p class="lead">من أكوا جولد في أسوان: مادة <b>جينشان الأصلية</b>، ومعاها <b>الفحم النشط</b> و<b>معدات التنقية</b>. كل خامات التنقية عندنا.</p>
         <div class="ctas">
           <a class="btn btn-gold" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN" href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر</a>
-          <a class="btn btn-ghost" href="#products">شوف المنتجات</a>
+          <a class="btn btn-ghost" href="#story">اعرف الحكاية</a>
         </div>
         <div class="facts">
           <div><b data-count="25">25</b><small>كجم الشيكارة</small></div>
@@ -406,46 +580,27 @@
     <div class="wave" aria-hidden="true">
       <svg class="w1" fill="#3196DF"><use href="#wavePath" x="0" width="50%"/><use href="#wavePath" x="50%" width="50%"/></svg>
       <svg class="w2" fill="#0E66AE"><use href="#wavePath" x="0" width="50%" y="14"/><use href="#wavePath" x="50%" width="50%" y="14"/></svg>
-      <svg class="w3" fill="#F9FCF5" viewBox="0 0 1440 110" preserveAspectRatio="none" style="width:100%"><path d="M0 80C240 50 480 50 720 80S1200 110 1440 80V110H0Z"/></svg>
+      <svg fill="#F9FCF5" viewBox="0 0 1440 110" preserveAspectRatio="none" style="width:100%"><path d="M0 80C240 50 480 50 720 80S1200 110 1440 80V110H0Z"/></svg>
     </div>
   </section>
 
-  <section class="meaning" id="about">
+  <div class="shortcuts">
     <div class="wrap">
-      <div class="head" data-reveal>
-        <h2>يعني إيه أكوا جولد؟</h2>
-        <p>اللوجو بتاعنا هو الشغل نفسه: الميه بتطلّع الدهب من الخام.</p>
-      </div>
-      <div class="m-grid">
-        <div class="m-card aqua" data-reveal>
-          <div class="ico"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg></div>
-          <h3>القطرة<span class="en">AQUA</span></h3>
-          <p>أكوا يعني ميه. القطرة الزرقا هي محلول الاستخلاص اللي بيترش على الخام ويذوّب الدهب منه.</p>
-        </div>
-        <div class="m-card gold" data-reveal>
-          <div class="ico"><svg style="color:#C89B4E"><use href="#i-bars"/></svg></div>
-          <h3>السبايك<span class="en">GOLD</span></h3>
-          <p>جولد يعني دهب. السبايك هي النتيجة اللي صاحب الموقع مستنيها: دهب صافي في الآخر.</p>
-        </div>
-        <div class="m-card gold" data-reveal>
-          <div class="ico"><svg style="color:#C89B4E"><use href="#i-spark"/></svg></div>
-          <h3>اللمعة<span class="en">ORIGINAL</span></h3>
-          <p>النجوم حوالين السبايك هي لمعة الأصلي. وده شعارنا: الأصلي من مصدره.</p>
-        </div>
-      </div>
-      <p class="m-sum" data-reveal><b>الميه</b> + <i>الدهب</i> = أكوا جولد</p>
-    </div>
-  </section>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="track" id="mq">
-      <span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>جينشان JIN CHAN الأصلي</span><span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>شيكارة 25 كجم سادة ومطبوعة</span><span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>ISO 9001:2015</span><span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>الفحم النشط</span><span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>معدات تنقية الذهب</span><span><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>أسوان، مصر</span>
+      <nav class="sc-grid" aria-label="اختصارات">
+        <a class="sc" href="#jinchan"><span class="ci g"><svg><use href="#i-bag"/></svg></span>جينشان<small>المواصفات</small></a>
+        <a class="sc" href="#products"><span class="ci a"><svg><use href="#i-carbon"/></svg></span>الفحم النشط<small>الأنواع</small></a>
+        <a class="sc" href="#products"><span class="ci g"><svg><use href="#i-bars"/></svg></span>معدات التنقية<small>المتاح</small></a>
+        <a class="sc" href="#story"><span class="ci a"><svg><use href="#i-book"/></svg></span>حكاية الدهب<small>خطوة بخطوة</small></a>
+        <a class="sc" href="#faq"><span class="ci a"><svg><use href="#i-q"/></svg></span>الأسئلة<small>إجابات سريعة</small></a>
+        <a class="sc" data-wa="السلام عليكم، عايز عرض سعر" href="#contact"><span class="ci w"><svg><use href="#i-wa"/></svg></span>عرض سعر<small>على واتساب</small></a>
+      </nav>
     </div>
   </div>
 
   <section class="products-sec" id="products">
     <div class="wrap">
       <div class="head" data-reveal>
+        <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>منتجاتنا</span>
         <h2>كل اللي موقعك محتاجه للتنقية</h2>
         <p>اختار المنتج واسألنا على واتساب، وهنرد عليك بالسعر والكمية المتاحة.</p>
       </div>
@@ -453,28 +608,97 @@
     </div>
   </section>
 
-  <section class="journey" id="journey">
+  <section class="story dark" id="story">
     <div class="wrap">
       <div class="head" data-reveal>
-        <h2>رحلة الذهب من الخام</h2>
-        <p>نفس حكاية اللوجو: محلول بيذوّب الدهب، والفحم بيمسكه، والمعدات بتطلّعه صافي.</p>
+        <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>حكاية جرام دهب</span>
+        <h2>إزاي الدهب بيطلع من الصخر؟</h2>
+        <p>حكاية بسيطة لكل خطوة، ومنتجاتنا داخلة فيها من الأول للآخر.</p>
       </div>
-      <div class="flow" id="steps">
-        <svg class="river" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true">
-          <path class="base" d="M880 48C780 10 700 86 620 48S460 10 380 48 220 86 120 48"/>
-          <path class="fill" pathLength="1" d="M880 48C780 10 700 86 620 48S460 10 380 48 220 86 120 48"/>
-        </svg>
-        <div class="steps">
-          <div class="step w"><div class="dot"><svg><use href="#i-rock"/></svg></div><h3>تجهيز الخام</h3><p>تكسير الخام وتكويمه في الموقع أو تحميله في الخزان.</p></div>
-          <div class="step w"><div class="dot"><svg viewBox="0 0 24 30" style="color:#fff"><use href="#i-drop"/></svg></div><h3>الترشيح</h3><p>رش محلول جينشان على الكومة عشان يذوّب الدهب من الخام.</p><span class="use">جينشان JIN CHAN</span></div>
-          <div class="step w"><div class="dot"><svg><use href="#i-carbon"/></svg></div><h3>الامتصاص</h3><p>المحلول بيعدّي على الفحم النشط اللي بيمسك الدهب.</p><span class="use">الفحم النشط</span></div>
-          <div class="step g"><div class="dot"><svg><use href="#i-bars"/></svg></div><h3>الاستخلاص</h3><p>فصل الدهب من الفحم وتنقيته بالمعدات.</p><span class="use">معدات التنقية</span></div>
+      <div class="story-grid">
+        <div class="sv" aria-hidden="true">
+          <div class="sv-box" id="svBox">
+            <div class="sv-frame on"><img src="img/mine.webp" alt="" loading="lazy"></div>
+            <div class="sv-frame"><img src="img/heap.webp" alt="" loading="lazy"></div>
+            <div class="sv-frame"><img src="img/pit.webp" alt="" loading="lazy"></div>
+            <div class="sv-frame carbon"><div class="carbon-art"></div><div class="cap-art">الفحم بيمسك ذرات الدهب</div></div>
+            <div class="sv-frame"><img src="img/gold-bars.webp" alt="" loading="lazy"></div>
+            <span class="sv-tag" id="svTag">الخام</span>
+            <div class="sv-dots" id="svDots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="chapters">
+          <article class="ch on" data-tag="الخام">
+            <div class="ch-img"><img src="img/mine.webp" alt="خام فيه عروق دهب في موقع تعدين" loading="lazy"></div>
+            <span class="step-n">1</span>
+            <h3>الدهب مستخبي في الصخر</h3>
+            <p>في جبال الصحرا، الدهب مش بيبان بالعين. بيبقى ذرات صغيرة جدًا متفرقة جوه الخام، ومحتاجة طريقة عشان تطلع.</p>
+          </article>
+          <article class="ch" data-tag="التكويم">
+            <div class="ch-img"><img src="img/heap.webp" alt="أكوام ترشيح في موقع استخلاص" loading="lazy"></div>
+            <span class="step-n">2</span>
+            <h3>نكسّر الخام ونكوّمه</h3>
+            <p>الخام بيتكسر ويتكوّم في كومة كبيرة أو يتحط في خزان، عشان المحلول يقدر يوصل لكل حتة فيه.</p>
+          </article>
+          <article class="ch" data-tag="جينشان">
+            <div class="ch-img"><img src="img/pit.webp" alt="شيكارة جينشان في موقع تعدين" loading="lazy"></div>
+            <span class="step-n">3</span>
+            <h3>جينشان بيدوّب الدهب</h3>
+            <p>بيترش محلول جينشان على الكومة. المحلول بينزل بين الحجارة، ويدوّب ذرات الدهب ويشيلها معاه لتحت.</p>
+            <a class="prod-tag" href="#jinchan"><svg viewBox="0 0 24 30"><use href="#i-dropc"/></svg>جينشان JIN CHAN</a>
+          </article>
+          <article class="ch" data-tag="الفحم النشط">
+            <div class="ch-img"><div class="sv-frame carbon"><div class="carbon-art"></div></div></div>
+            <span class="step-n">4</span>
+            <h3>الفحم النشط بيمسك الدهب</h3>
+            <p>المحلول اللي فيه الدهب بيعدّي على الفحم النشط. الفحم بيمسك الدهب ويسيب الباقي يعدّي.</p>
+            <a class="prod-tag" href="#products"><svg><use href="#i-carbon"/></svg>الفحم النشط</a>
+          </article>
+          <article class="ch gold" data-tag="السبيكة">
+            <div class="ch-img"><img src="img/gold-bars.webp" alt="سبايك دهب" loading="lazy"></div>
+            <span class="step-n">5</span>
+            <h3>المعدات بتطلّع الدهب صافي</h3>
+            <p>الدهب بيتفصل من الفحم ويتنقّى بالمعدات، لحد ما يبقى دهب صافي في إيدك.</p>
+            <a class="prod-tag" href="#products"><svg><use href="#i-bars"/></svg>معدات التنقية</a>
+          </article>
+        </div>
+      </div>
+      <div class="story-end" data-reveal>
+        <p>كل خطوة بتعتمد على اللي قبلها. ولو المادة مغشوشة، <b>الدهب يفضل في الصخر</b>.</p>
+        <a class="btn btn-gold" href="#trust"><svg><use href="#i-shield"/></svg>اعرف إزاي تشتري صح</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="trust-box">
+        <div class="trust-img" data-reveal>
+          <div class="ph bagcheck"><img src="img/jinchan-printed.webp" alt="شيكارة جينشان الأصلية بالبيانات المطبوعة عليها" loading="lazy" width="619" height="899">
+            <span class="call c1"><svg><use href="#i-check"/></svg>JIN CHAN</span>
+            <span class="call c2"><svg><use href="#i-check"/></svg>SHJCA02</span>
+            <span class="call c3"><svg><use href="#i-check"/></svg>ISO 9001:2015</span>
+            <span class="call c4"><svg><use href="#i-check"/></svg>25 KG</span>
+          </div>
+          <div class="seal"><svg><use href="#i-shield"/></svg><div>الأصلي من مصدره<small>بيانات كاملة على الشيكارة</small></div></div>
+        </div>
+        <div data-reveal>
+          <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>قبل ما تشتري</span>
+          <h2>اشتري من شركة موثوقة</h2>
+          <p class="intro">المادة المغشوشة مش بتخسّرك تمنها بس. بتخسّرك الخام والمجهود والوقت اللي صرفته على الكومة. عشان كده اتأكد قبل ما تشتري:</p>
+          <ul class="checks">
+            <li><span class="ok"><svg><use href="#i-check"/></svg></span><div><b>البيانات كاملة على الشيكارة</b><span>الاسم JIN CHAN، والموديل SHJCA02، وشهادة ISO 9001:2015، والصلاحية.</span></div></li>
+            <li><span class="ok"><svg><use href="#i-check"/></svg></span><div><b>الشيكارة مقفولة وسليمة</b><span>شيكارة 25 كجم مقفولة، مش متفتحة ولا متعبية تاني.</span></div></li>
+            <li><span class="ok"><svg><use href="#i-check"/></svg></span><div><b>البايع معروف وليه مكان</b><span>شركة ليها اسم ومكان ورقم ثابت تقدر ترجعله في أي وقت.</span></div></li>
+          </ul>
+          <div class="warn"><svg><use href="#i-alert"/></svg><span>خلي بالك من السعر اللي أرخص بكتير من السوق. غالبًا ده معناه إن المادة مش أصلية.</span></div>
+          <a class="btn btn-navy" data-wa="السلام عليكم، عايز أشتري جينشان أصلي، ممكن السعر والمتاح؟" href="#contact"><svg><use href="#i-wa"/></svg>اشتري الأصلي من أكوا جولد</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="jinchan">
+  <section class="specs-sec" id="jinchan">
     <div class="wrap">
       <div class="spec-wrap">
         <div class="bag-stage" data-reveal>
@@ -491,7 +715,7 @@
         <div data-reveal>
           <div class="spec-head">
             <h2>مواصفات <span class="en">JIN CHAN</span></h2>
-            <p>البيانات زي ما هي مكتوبة على الشيكارة الأصلية.</p>
+            <p>البيانات زي ما هي مكتوبة على الشيكارة الأصلية. قارنها بالشيكارة اللي قدامك.</p>
           </div>
           <ul class="spec-list">
             <li><b>الاسم على الشيكارة</b><span class="en" style="text-align:right">JIN CHAN, Metallic Ore Dressing Agent</span></li>
@@ -504,7 +728,7 @@
           </ul>
           <div class="spec-ctas">
             <a class="btn btn-gold" data-wa="السلام عليكم، عايز عرض سعر على جينشان JIN CHAN، الكمية: " href="#contact"><svg><use href="#i-wa"/></svg>اطلب عرض سعر</a>
-            <a class="btn btn-ghost" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصل بينا</a>
+            <a class="btn btn-line" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصل بينا</a>
           </div>
         </div>
       </div>
@@ -532,9 +756,56 @@
     </div>
   </section>
 
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-top">
+        <div class="txt" data-reveal>
+          <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>من نحن</span>
+          <h2>أكوا جولد: خامات وتكنولوجيا تنقية الذهب</h2>
+          <p><strong>أكوا جولد شركة مصرية من أسوان،</strong> متخصصة في خامات تنقية الذهب. بنوفّر لأصحاب مواقع ومشاريع الاستخلاص المواد اللي شغلهم معتمد عليها: جينشان JIN CHAN الأصلي، والفحم النشط، ومعدات التنقية.</p>
+          <p>شغلنا قايم على حاجة واحدة: إن صاحب الموقع يشتري وهو مطمن. منتج أصلي ببياناته كاملة، وسعر واضح من الأول، ورد سريع لما يسأل.</p>
+          <div class="sign">
+            <span><svg><use href="#i-pin"/></svg>أسوان، مصر</span>
+            <span><svg><use href="#i-shield"/></svg>الأصلي من مصدره</span>
+            <span><svg><use href="#i-chat"/></svg>رد سريع على واتساب</span>
+          </div>
+        </div>
+        <div class="logo-card" data-reveal><img src="img/logo-main.svg" alt="لوجو أكوا جولد: خامات وتكنولوجيا تنقية الذهب" loading="lazy"></div>
+      </div>
+
+      <div class="values">
+        <div class="val" data-reveal><div class="vi g"><svg><use href="#i-shield"/></svg></div><h3>منتج أصلي</h3><p>بنبيع جينشان الأصلي بالبيانات الكاملة على الشيكارة.</p></div>
+        <div class="val" data-reveal><div class="vi a"><svg><use href="#i-tag"/></svg></div><h3>سعر واضح</h3><p>بتعرف السعر والكمية المتاحة قبل أي اتفاق.</p></div>
+        <div class="val" data-reveal><div class="vi a"><svg><use href="#i-chat"/></svg></div><h3>رد سريع</h3><p>ابعت سؤالك على واتساب وهنرد عليك بسرعة.</p></div>
+        <div class="val" data-reveal><div class="vi g"><svg><use href="#i-pin"/></svg></div><h3>قريبين منك</h3><p>من أسوان، قريبين من مواقع ومشاريع التعدين في الجنوب.</p></div>
+      </div>
+
+      <h3 class="meaning-title" data-reveal>يعني إيه أكوا جولد؟</h3>
+      <p class="meaning-sub" data-reveal>اللوجو بتاعنا هو الشغل نفسه: الميه بتطلّع الدهب من الخام.</p>
+      <div class="m-grid">
+        <div class="m-card aqua" data-reveal>
+          <div class="ico"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg></div>
+          <h3>القطرة<span class="en">AQUA</span></h3>
+          <p>أكوا يعني ميه. القطرة الزرقا هي محلول الاستخلاص اللي بيترش على الخام ويدوّب الدهب منه.</p>
+        </div>
+        <div class="m-card gold" data-reveal>
+          <div class="ico"><svg style="color:#C89B4E"><use href="#i-bars"/></svg></div>
+          <h3>السبايك<span class="en">GOLD</span></h3>
+          <p>جولد يعني دهب. السبايك هي النتيجة اللي صاحب الموقع مستنيها: دهب صافي في الآخر.</p>
+        </div>
+        <div class="m-card gold" data-reveal>
+          <div class="ico"><svg style="color:#C89B4E"><use href="#i-spark"/></svg></div>
+          <h3>اللمعة<span class="en">ORIGINAL</span></h3>
+          <p>النجوم حوالين السبايك هي لمعة الأصلي. وده شعارنا: الأصلي من مصدره.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="gallery-sec" id="gallery">
     <div class="wrap">
       <div class="head" data-reveal>
+        <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>من عندنا</span>
         <h2>البضاعة جاهزة عندنا</h2>
         <p>كميات جينشان متوفرة في مخزنا بأسوان.</p>
       </div>
@@ -547,11 +818,38 @@
     </div>
   </section>
 
+  <section class="faq-sec" id="faq">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <span class="kick"><svg viewBox="0 0 24 30"><use href="#i-drop"/></svg>تشتري إزاي؟</span>
+        <h2>3 خطوات وتبقى البضاعة معاك</h2>
+      </div>
+      <div class="order">
+        <div class="o-step" data-reveal><div class="n">1</div><h3>اختار المنتج</h3><p>جينشان، أو الفحم النشط، أو معدات التنقية.</p></div>
+        <div class="o-step" data-reveal><div class="n">2</div><h3>ابعتلنا على واتساب</h3><p>قولنا المنتج والكمية اللي محتاجها.</p></div>
+        <div class="o-step" data-reveal><div class="n">3</div><h3>نتفق وتستلم</h3><p>نرد عليك بالسعر والمتاح، ونتفق على ميعاد الاستلام من عندنا.</p></div>
+      </div>
+
+      <div class="head" data-reveal style="margin-bottom:34px">
+        <h2>أسئلة بتتسأل كتير</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details><summary>جينشان بيستخدم في إيه؟<span class="pm"></span></summary><div class="ans"><p>جينشان JIN CHAN مادة لاستخلاص الدهب من الخام، وبتستخدم في ترشيح الكومة والخزان.</p></div></details>
+        <details><summary>إيه الفرق بين الشيكارة السادة والمطبوعة؟<span class="pm"></span></summary><div class="ans"><p>مفيش فرق في الخامة خالص. نفس المادة بالظبط، والفرق في شكل الشيكارة بس.</p></div></details>
+        <details><summary>العبوة كام كيلو وصلاحيتها قد إيه؟<span class="pm"></span></summary><div class="ans"><p>الشيكارة 25 كجم، والصلاحية سنتين.</p></div></details>
+        <details><summary>أعرف إزاي إن جينشان أصلي؟<span class="pm"></span></summary><div class="ans"><p>اتأكد إن البيانات كاملة على الشيكارة: الاسم JIN CHAN، والموديل SHJCA02، وشهادة ISO 9001:2015، والصلاحية. واتأكد إن الشيكارة مقفولة وسليمة، واشتري من شركة معروفة. <a href="#trust">اقرا التفاصيل</a></p></div></details>
+        <details><summary>أعرف السعر إزاي؟<span class="pm"></span></summary><div class="ans"><p>ابعتلنا على واتساب المنتج والكمية، وهنرد عليك بالسعر والمتاح.</p></div></details>
+        <details><summary>الاستلام بيبقى إزاي؟<span class="pm"></span></summary><div class="ans"><p>البيع من عندنا في أسوان. بعد ما نتفق على الكمية والسعر، بنحدد معاك ميعاد الاستلام.</p></div></details>
+        <details><summary>عندكم أنواع الفحم النشط ومعدات التنقية؟<span class="pm"></span></summary><div class="ans"><p>أيوه. اسألنا على واتساب عن الأنواع والعبوات والمعدات المتاحة وقت طلبك.</p></div></details>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
     <div class="wave" aria-hidden="true">
       <svg class="w1" fill="#3196DF"><use href="#wavePath" x="0" width="50%"/><use href="#wavePath" x="50%" width="50%"/></svg>
       <svg class="w2" fill="#0E66AE"><use href="#wavePath" x="0" width="50%" y="14"/><use href="#wavePath" x="50%" width="50%" y="14"/></svg>
-      <svg class="w3" fill="#F9FCF5" viewBox="0 0 1440 110" preserveAspectRatio="none" style="width:100%"><path d="M0 80C240 50 480 50 720 80S1200 110 1440 80V110H0Z"/></svg>
+      <svg fill="#F9FCF5" viewBox="0 0 1440 110" preserveAspectRatio="none" style="width:100%"><path d="M0 80C240 50 480 50 720 80S1200 110 1440 80V110H0Z"/></svg>
     </div>
     <div class="wrap" data-reveal>
       <h2>محتاج كمية؟ <span class="gold-text shine">كلمنا</span></h2>
@@ -561,19 +859,56 @@
         <a class="btn btn-wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg>كلمنا على واتساب</a>
         <a class="btn btn-ghost" data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصال</a>
       </div>
-      <div class="meta">
-        <span><svg><use href="#i-pin"/></svg>أسوان، مصر</span>
-        <a href="https://www.facebook.com/share/1AAuwv36dU/" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>صفحتنا على فيسبوك</a>
-      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  © <span id="yr">2026</span> <b>أكوا جولد</b> <span class="en">Aqua Gold</span>، خامات وتكنولوجيا تنقية الذهب، أسوان
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <img src="img/icon.png" alt="" width="64" height="64" loading="lazy">
+        <b>أكوا جولد</b>
+        <p>خامات وتكنولوجيا تنقية الذهب، من أسوان. الأصلي من مصدره.</p>
+      </div>
+      <div>
+        <h4>المنتجات</h4>
+        <ul>
+          <li><a href="#jinchan">جينشان JIN CHAN</a></li>
+          <li><a href="#products">الفحم النشط</a></li>
+          <li><a href="#products">معدات تنقية الذهب</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>اعرف أكتر</h4>
+        <ul>
+          <li><a href="#story">حكاية الدهب</a></li>
+          <li><a href="#trust">إزاي تتأكد إنه أصلي</a></li>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>تواصل معانا</h4>
+        <ul>
+          <li><a data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg>واتساب</a></li>
+          <li><a data-tel href="#contact"><svg><use href="#i-phone"/></svg><span class="en">01286665262</span></a></li>
+          <li><a href="https://www.facebook.com/share/1AAuwv36dU/" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>صفحتنا على فيسبوك</a></li>
+          <li><span><svg><use href="#i-pin"/></svg>أسوان، مصر</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">© <span id="yr">2026</span> <b>أكوا جولد</b> <span class="en">Aqua Gold</span>. كل الحقوق محفوظة.</div>
+  </div>
 </footer>
 
 <a class="fab" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact" aria-label="كلمنا على واتساب"><svg><use href="#i-wa"/></svg></a>
+<button class="totop" id="totop" type="button" aria-label="ارجع لفوق"><svg><use href="#i-up"/></svg></button>
+<nav class="mbar" id="mbar" aria-label="اختصارات سريعة">
+  <a data-tel href="#contact"><svg><use href="#i-phone"/></svg>اتصال</a>
+  <a class="wa" data-wa="السلام عليكم، عايز أستفسر عن منتجات أكوا جولد" href="#contact"><svg><use href="#i-wa"/></svg>واتساب</a>
+  <a href="#products"><svg><use href="#i-bag"/></svg>المنتجات</a>
+</nav>
 
 <script>
 /* ===== البيانات: عدّل هنا ===== */
@@ -632,41 +967,67 @@ document.getElementById("productGrid").innerHTML = PRODUCTS.map(p => `
 document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + PHONE; });
 
+/* carbon art: granules that catch gold specks */
+document.querySelectorAll(".carbon-art").forEach(box => {
+  const gr = [[18,22,34],[52,14,30],[30,50,38],[64,46,28],[12,62,24],[48,72,26],[74,74,20]];
+  box.innerHTML = gr.map(([x,y,s]) => `<span class="gr" style="left:${x}%;top:${y}%;width:${s}%;height:${s}%"></span>`).join("") +
+    gr.map(([x,y,s],i) => `<span class="au" style="left:${x + s*.4}%;top:${y + s*.3}%;--fx:${(i%2?1:-1)*(40+i*8)}px;--fy:${-60-i*6}px;animation-delay:${-i*.55}s"></span>`).join("");
+});
+
 /* hero load */
 addEventListener("load", () => requestAnimationFrame(() => document.documentElement.classList.add("loaded")));
 setTimeout(() => document.documentElement.classList.add("loaded"), 1800);
 
-const hdr = document.getElementById("hdr");
-const onScrollHdr = () => hdr.classList.toggle("solid", scrollY > 40);
+/* mobile menu */
+const burger = document.getElementById("burger"), sheet = document.getElementById("sheet");
+const setMenu = open => { document.body.classList.toggle("menu-open", open); burger.setAttribute("aria-expanded", open); };
+burger.addEventListener("click", () => setMenu(!document.body.classList.contains("menu-open")));
+sheet.querySelectorAll("a").forEach((a, i) => { if (a.classList.contains("it")) a.style.transitionDelay = (i * .05) + "s"; a.addEventListener("click", () => setMenu(false)); });
+addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
 
-const mq = document.getElementById("mq"); mq.innerHTML += mq.innerHTML;
-
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15, rootMargin: "0px 0px -40px 0px" });
+/* reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -40px 0px" });
 document.querySelectorAll("[data-reveal]").forEach(el => {
   const sib = [...el.parentElement.children].filter(x => x.hasAttribute("data-reveal"));
-  if (el.closest(".products,.gallery,.m-grid")) el.style.transitionDelay = sib.indexOf(el) * 0.12 + "s";
+  if (el.closest(".products,.gallery,.m-grid,.values,.order")) el.style.transitionDelay = sib.indexOf(el) * 0.1 + "s";
   io.observe(el);
 });
 
-/* journey: the stream fills while scrolling */
-const flow = document.getElementById("steps"), river = flow.querySelector(".river .fill"), stepEls = [...flow.querySelectorAll(".step")];
-const onScrollJourney = () => {
-  const r = flow.getBoundingClientRect(), vh = innerHeight;
-  const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .6)));
-  river.style.setProperty("--p", p);
-  stepEls.forEach((s, i) => s.classList.toggle("on", innerWidth > 980 ? p > 0 && p >= i / 3 - .02 : s.getBoundingClientRect().top < vh * .7));
+/* story: the sticky picture follows the chapter in view */
+const chs = [...document.querySelectorAll(".ch")], frames = [...document.querySelectorAll("#svBox .sv-frame")], dots = [...document.querySelectorAll("#svDots i")], svTag = document.getElementById("svTag");
+let curCh = 0;
+const setCh = i => {
+  if (i === curCh) return; curCh = i;
+  chs.forEach((c, k) => c.classList.toggle("on", k === i));
+  frames.forEach((f, k) => f.classList.toggle("on", k === i));
+  dots.forEach((d, k) => d.classList.toggle("on", k === i));
+  svTag.textContent = chs[i].dataset.tag;
 };
 
+/* scroll: header, active nav link, story, parallax, floating buttons */
+const hdr = document.getElementById("hdr"), totop = document.getElementById("totop"), mbar = document.getElementById("mbar");
+const navLinks = [...document.querySelectorAll(".links a")];
+const secs = navLinks.map(a => document.querySelector(a.getAttribute("href")));
 const pars = [...document.querySelectorAll("[data-par]")];
-const onScrollPar = () => pars.forEach((img, i) => {
-  const r = img.parentElement.getBoundingClientRect();
-  const k = Math.max(-1, Math.min(1, (r.top + r.height / 2 - innerHeight / 2) / innerHeight));
-  img.style.transform = `translateY(${(-8 + k * (i % 2 ? 10 : 6)).toFixed(2)}%)`;
-});
-
+const onScroll = () => {
+  const y = scrollY, vh = innerHeight;
+  hdr.classList.toggle("solid", y > 40);
+  totop.classList.toggle("show", y > vh);
+  mbar.classList.toggle("show", y > vh * .6);
+  let cur = -1; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < vh * .4) cur = i; });
+  navLinks.forEach((a, i) => a.classList.toggle("cur", i === cur));
+  if (innerWidth > 980) { let best = 0; chs.forEach((c, i) => { if (c.getBoundingClientRect().top < vh * .55) best = i; }); setCh(best); }
+  if (!calm) pars.forEach((img, i) => {
+    const r = img.parentElement.getBoundingClientRect();
+    const k = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+    img.style.transform = `translateY(${(-8 + k * (i % 2 ? 10 : 6)).toFixed(2)}%)`;
+  });
+};
 let ticking = false;
-addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScrollHdr(); onScrollJourney(); if (!calm) onScrollPar(); ticking = false; }); } }, { passive: true });
-onScrollHdr(); onScrollJourney(); if (!calm) onScrollPar();
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { onScroll(); ticking = false; }); } }, { passive: true });
+addEventListener("resize", onScroll);
+onScroll();
+totop.addEventListener("click", () => scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" }));
 
 /* count-up */
 const cio = new IntersectionObserver(es => es.forEach(e => {
@@ -678,6 +1039,10 @@ const cio = new IntersectionObserver(es => es.forEach(e => {
   requestAnimationFrame(step);
 }));
 document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+
+/* faq: one answer open at a time */
+const dets = [...document.querySelectorAll(".faq details")];
+dets.forEach(d => d.addEventListener("toggle", () => { if (d.open) dets.forEach(o => { if (o !== d) o.open = false; }); }));
 
 /* bag toggle */
 const bags = { printed: ["img/jinchan-printed.webp", "شيكارة جينشان مطبوعة"], plain: ["img/jinchan-plain.webp", "شيكارة جينشان سادة"] };
@@ -727,9 +1092,6 @@ addEventListener("resize", fixPill); document.fonts && document.fonts.ready.then
 /* offer */
 if (offerOn) {
   document.getElementById("offer").hidden = false;
-  const strip = document.getElementById("offerStrip"); strip.hidden = false;
-  const setStrip = () => document.documentElement.style.setProperty("--strip-h", strip.offsetHeight + "px");
-  setStrip(); addEventListener("resize", setStrip);
   const end = new Date(OFFER_END).getTime();
   const tick = () => {
     const s = Math.max(0, (end - Date.now()) / 1000);
@@ -739,8 +1101,6 @@ if (offerOn) {
     cdS.textContent = Math.floor(s % 60);
   };
   tick(); setInterval(tick, 1000);
-} else {
-  document.querySelectorAll("[data-offer-link]").forEach(a => a.remove());
 }
 document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
