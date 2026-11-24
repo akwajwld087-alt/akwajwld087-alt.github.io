@@ -57,7 +57,7 @@
 
   /* ---------- header ---------- */
   header{position:fixed;inset-inline:0;top:0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s}
-  header.solid,.menu-open header{background:rgba(12,31,58,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(0,0,0,.18)}
+  header.solid,.menu-open header{background:rgba(12,31,58,.97);box-shadow:0 8px 30px rgba(0,0,0,.18)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--hdr)}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:none}
   .brand img{width:50px;height:50px}
@@ -172,13 +172,14 @@
   .cv-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;min-width:0}
   .cv{position:relative;width:100%;height:400px;perspective:1300px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
   .cv-card{position:absolute;top:10px;left:50%;width:250px;height:340px;margin-left:-125px;border-radius:26px;background:#fff;overflow:hidden;cursor:pointer;
-    transition:transform .8s var(--ease),opacity .6s,filter .6s,box-shadow .6s;box-shadow:0 30px 60px rgba(0,0,0,.45);-webkit-box-reflect:below 14px linear-gradient(transparent 72%,rgba(255,255,255,.14))}
+    transition:transform .8s var(--ease),opacity .6s,box-shadow .6s;box-shadow:0 24px 50px rgba(0,0,0,.4)}
+  .cv-card::after{content:"";position:absolute;inset:0;background:#0C1F3A;opacity:.42;transition:opacity .6s;pointer-events:none;z-index:4}
+  .cv-card.is-cur::after{opacity:0}
   .cv-card img{position:absolute;inset:16px 16px 74px;width:calc(100% - 32px);height:calc(100% - 90px);object-fit:contain;pointer-events:none}
   .cv-card .cv-name{position:absolute;inset-inline:0;bottom:0;padding:14px 18px 16px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);color:var(--navy);font-weight:900;font-size:20px;line-height:1.2}
   .cv-card .cv-name small{display:block;font-family:Outfit,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.14em;color:var(--gold-ink);margin-top:4px}
   .cv-card .cv-tag{position:absolute;top:14px;inset-inline-start:14px;background:var(--mist);color:var(--aqua);font-weight:800;font-size:12.5px;padding:4px 12px;border-radius:999px;z-index:2}
   .cv-card.is-cur{box-shadow:0 0 0 2px rgba(95,180,240,.9),0 0 46px rgba(49,150,223,.55),0 30px 60px rgba(0,0,0,.45)}
-  .cv-card:not(.is-cur){filter:brightness(.62) saturate(.8)}
   .cv-meta{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;margin-top:6px}
   .cv-dots{display:flex;gap:6px;align-items:center}
   .cv-dots button{width:7px;height:7px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.3);cursor:pointer;transition:width .4s var(--ease),background .4s}
@@ -202,11 +203,14 @@
   .hero.spot .h1 .latin{font-family:"Outfit",sans-serif;font-weight:700;font-size:.82em;direction:ltr;unicode-bidi:isolate;letter-spacing:.02em}
 
   /* hero floating shapes */
-  .h-shape{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;animation:floatShape 12s ease-in-out infinite}
-  .h-shape.s1{width:420px;height:420px;background:rgba(49,150,223,.32);top:8%;left:-6%}
-  .h-shape.s2{width:340px;height:340px;background:rgba(200,155,78,.22);bottom:6%;right:4%;animation-delay:-4s;animation-duration:14s}
-  .h-shape.s3{width:260px;height:260px;background:rgba(95,180,240,.18);top:38%;left:42%;animation-delay:-8s;animation-duration:16s}
+  .h-shape{position:absolute;border-radius:50%;pointer-events:none;animation:floatShape 12s ease-in-out infinite}
+  .h-shape.s1{width:620px;height:620px;background:radial-gradient(circle,rgba(49,150,223,.28),transparent 65%);top:-4%;left:-14%}
+  .h-shape.s2{width:520px;height:520px;background:radial-gradient(circle,rgba(200,155,78,.2),transparent 65%);bottom:-6%;right:-4%;animation-delay:-4s;animation-duration:14s}
+  .h-shape.s3{width:420px;height:420px;background:radial-gradient(circle,rgba(95,180,240,.15),transparent 65%);top:30%;left:36%;animation-delay:-8s;animation-duration:16s}
   @keyframes floatShape{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,24px) scale(.94)}}
+
+  /* sections off screen don't animate */
+  .off,.off *,.off *::before,.off *::after{animation-play-state:paused!important}
 
   /* rotating word */
   .rot,.hero h1 .ln>.rot{position:relative;display:inline-grid;vertical-align:top}
@@ -220,7 +224,7 @@
   .tk{position:absolute;inset-inline:-5%;top:50%;padding:16px 0;white-space:nowrap;overflow:hidden}
   .tk-gold{top:64%;background:var(--gold-grad);transform:translateY(-50%) rotate(-2.2deg);box-shadow:0 14px 34px rgba(156,114,48,.28);z-index:2}
   .tk-navy{top:36%;background:var(--navy);transform:translateY(-50%) rotate(2deg)}
-  .tk-run{display:inline-flex;align-items:center;gap:26px;animation:tick 38s linear infinite}
+  .tk-run{display:inline-flex;align-items:center;gap:26px;animation:tick 38s linear infinite;will-change:transform}
   .tk-navy .tk-run{animation-direction:reverse;animation-duration:46s}
   .tk span{font-weight:900;font-size:clamp(20px,2.4vw,30px);line-height:1}
   .tk-gold span{color:var(--navy-2)}
@@ -238,7 +242,7 @@
   @keyframes sweep{0%,62%{transform:translateX(120%)}100%{transform:translateX(-120%)}}
 
   /* 3D tilt + glare on cards */
-  .tilt{transform-style:preserve-3d;will-change:transform}
+  .tilt{transform-style:preserve-3d}
   .tilt .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(360px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),transparent 45%);opacity:0;transition:opacity .4s;z-index:3;mix-blend-mode:soft-light}
   .tilt:hover .glare{opacity:1}
 
@@ -547,7 +551,7 @@
   .totop svg{width:22px;height:22px}
 
   /* mobile bottom bar */
-  .mbar{display:none;position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:rgba(12,31,58,.94);backdrop-filter:blur(12px);border-radius:999px;padding:7px;grid-template-columns:1fr 1.3fr 1fr;gap:6px;box-shadow:0 14px 34px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .5s var(--ease)}
+  .mbar{display:none;position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:rgba(12,31,58,.97);border-radius:999px;padding:7px;grid-template-columns:1fr 1.3fr 1fr;gap:6px;box-shadow:0 14px 34px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .5s var(--ease)}
   .mbar.show{transform:none}
   .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:11px 6px;border-radius:999px}
   .mbar a svg{width:19px;height:19px}
@@ -1335,6 +1339,12 @@ hsInput.addEventListener("keydown", e => { if (e.key === "Escape") { hsList.hidd
   });
 })();
 
+/* pause animations of sections that are not on screen */
+(() => {
+  const io2 = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("off", !e.isIntersecting)), { rootMargin: "120px 0px" });
+  document.querySelectorAll("main > section, main > div, footer").forEach(el => io2.observe(el));
+})();
+
 document.querySelectorAll("[data-wa]").forEach(a => { a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + PHONE; });
 
@@ -1433,14 +1443,14 @@ addEventListener("resize", fixPill); document.fonts && document.fonts.ready.then
 /* hero: rising water bubbles + gold sparkles, the two halves of the logo */
 (() => {
   const cv = document.getElementById("fx"), ctx = cv.getContext("2d"); if (calm) return;
-  let W, H, pts = [], dpr = Math.min(2, devicePixelRatio || 1), run = true;
+  let W, H, pts = [], dpr = 1, run = true, lastW = 0;
   const mk = any => {
     const gold = Math.random() < .45;
     return { gold, x: Math.random() * W, y: any ? Math.random() * H : H + 20, r: gold ? Math.random() * 4 + 2.5 : Math.random() * 5 + 2,
       v: Math.random() * .4 + .15, d: Math.random() * 6.28, rot: Math.random() * 6.28 };
   };
   const size = () => { W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    pts = Array.from({ length: Math.round(Math.min(60, W * H / 22000)) }, () => mk(true)); };
+    pts = Array.from({ length: Math.round(Math.min(36, W * H / 30000)) }, () => mk(true)); };
   const star = (x, y, r, a) => { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.beginPath();
     ctx.moveTo(0, -r); ctx.quadraticCurveTo(0, 0, r, 0); ctx.quadraticCurveTo(0, 0, 0, r); ctx.quadraticCurveTo(0, 0, -r, 0); ctx.quadraticCurveTo(0, 0, 0, -r); ctx.fill(); ctx.restore(); };
   const draw = () => {
@@ -1455,7 +1465,8 @@ addEventListener("resize", fixPill); document.fonts && document.fonts.ready.then
     }
     requestAnimationFrame(draw);
   };
-  size(); addEventListener("resize", size);
+  size(); lastW = innerWidth;
+  addEventListener("resize", () => { if (innerWidth !== lastW) { lastW = innerWidth; size(); } });
   new IntersectionObserver(([e]) => { const was = run; run = e.isIntersecting; if (run && !was) draw(); }).observe(cv);
   draw();
 })();
