@@ -176,8 +176,8 @@
   .cv-card::after{content:"";position:absolute;inset:0;background:#0C1F3A;opacity:.42;transition:opacity .6s;pointer-events:none;z-index:4}
   .cv-card.is-cur::after{opacity:0}
   .cv-card img{position:absolute;inset:16px 16px 74px;width:calc(100% - 32px);height:calc(100% - 90px);object-fit:contain;pointer-events:none}
-  .cv-card .cv-name{position:absolute;inset-inline:0;bottom:0;padding:14px 18px 16px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);color:var(--navy);font-weight:900;font-size:20px;line-height:1.2}
-  .cv-card .cv-name small{display:block;font-family:Outfit,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.14em;color:var(--gold-ink);margin-top:4px}
+  .cv-card .cv-name{position:absolute;inset-inline:0;bottom:0;padding:14px 18px 16px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);color:var(--navy);font-weight:800;font-size:18px;line-height:1.25}
+  .cv-card .cv-name small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:Outfit,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.14em;color:var(--gold-ink);margin-top:4px}
   .cv-card .cv-tag{position:absolute;top:14px;inset-inline-start:14px;background:var(--mist);color:var(--aqua);font-weight:800;font-size:12.5px;padding:4px 12px;border-radius:999px;z-index:2}
   .cv-card.is-cur{box-shadow:0 0 0 2px rgba(95,180,240,.9),0 0 46px rgba(49,150,223,.55),0 30px 60px rgba(0,0,0,.45)}
   .cv-meta{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;margin-top:6px}
@@ -219,7 +219,7 @@
   .rot>span.out{opacity:0;transform:translateY(-70%) rotateX(60deg)}
 
   /* ticker */
-  html{overflow-x:clip}
+
   .ticker{position:relative;height:200px;margin-top:50px;overflow:hidden;contain:paint;pointer-events:none}
   .tk{position:absolute;inset-inline:-5%;top:50%;padding:16px 0;white-space:nowrap;overflow:hidden}
   .tk-gold{top:64%;background:var(--gold-grad);transform:translateY(-50%) rotate(-2.2deg);box-shadow:0 14px 34px rgba(156,114,48,.28);z-index:2}
@@ -274,9 +274,11 @@
   .dark .kick{color:var(--gold-l)}
 
   .js [data-reveal]{opacity:0;transform:translateY(46px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
-  .js [data-reveal="right"]{transform:translateX(60px)}
-  .js [data-reveal="left"]{transform:translateX(-60px)}
-  .js [data-reveal="zoom"]{transform:scale(1.12)}
+  .js [data-reveal="zoom"]{transform:scale(.92)}
+  @media (min-width:1101px){
+    .js [data-reveal="right"]{transform:translateX(60px)}
+    .js [data-reveal="left"]{transform:translateX(-60px)}
+  }
   .js [data-reveal].in{opacity:1;transform:none}
 
   /* ---------- equipment ---------- */
@@ -341,10 +343,11 @@
   .prod.feature p{color:#c3cfdf}
   .prod ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
   .prod li{font-size:14.5px;padding:5px 14px;border-radius:999px;background:var(--mist);color:var(--navy);font-weight:500}
+  .prod.feature .more{color:var(--gold-l)}
   .prod.feature li{background:rgba(230,200,120,.12);color:var(--gold-l)}
   .prod .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
   .prod .actions .btn{padding:12px 22px;font-size:15.5px}
-  .prod .more{color:var(--gold-l);font-weight:800;text-decoration:none;align-self:center;padding:10px}
+  .prod .more{color:var(--gold-ink);font-weight:800;text-decoration:none;align-self:center;padding:10px}
 
   /* ---------- story ---------- */
   .story{background:var(--navy-2);color:#fff}
@@ -570,7 +573,7 @@
     .hsearch{width:auto;flex:0 1 380px}
     .hs-btn{display:block}
     .hero .wrap,.spec-wrap,.trust-box,.about-top{grid-template-columns:1fr}
-    .hero .wrap{padding-block:110px 170px;gap:60px}
+    .hero .wrap{padding-block:110px 150px;gap:24px}
     .hero2{grid-template-columns:1fr}
     .spot-in{grid-template-columns:1fr;padding:56px 26px;gap:56px}
     .drop-stage{width:min(80%,400px)}
@@ -1356,8 +1359,9 @@ document.querySelectorAll(".carbon-art").forEach(box => {
 });
 
 /* hero load */
-addEventListener("load", () => requestAnimationFrame(() => document.documentElement.classList.add("loaded")));
-setTimeout(() => document.documentElement.classList.add("loaded"), 1800);
+const goLoaded = () => document.documentElement.classList.add("loaded");
+setTimeout(goLoaded, 1200);
+(document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 600))]) : Promise.resolve()).then(goLoaded);
 
 /* mobile menu */
 const burger = document.getElementById("burger"), sheet = document.getElementById("sheet");
@@ -1395,7 +1399,7 @@ const onScroll = () => {
   hdr.classList.toggle("solid", y > 40);
   totop.classList.toggle("show", y > vh);
   mbar.classList.toggle("show", y > vh * .6);
-  let cur = -1; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < vh * .4) cur = i; });
+  let cur = -1; secs.forEach((s, i) => { if (!s) return; const r = s.getBoundingClientRect(); if (r.top < vh * .4 && r.bottom > vh * .4) cur = i; });
   navLinks.forEach((a, i) => a.classList.toggle("cur", i === cur));
   if (innerWidth > 980) { let best = 0; chs.forEach((c, i) => { if (c.getBoundingClientRect().top < vh * .55) best = i; }); setCh(best); }
   if (!calm) pars.forEach((img, i) => {
